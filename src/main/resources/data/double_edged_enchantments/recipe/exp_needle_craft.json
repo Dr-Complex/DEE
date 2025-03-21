@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "xp_needle",
+  "category": "misc",
+  "pattern": [
+    " B ",
+    "G#G",
+    " i "
+  ],
+  "key": {
+    "B": "#minecraft:wooden_buttons",
+    "G": "minecraft:glass_pane",
+    "i": "minecraft:iron_nugget",
+    "#": "minecraft:experience_bottle"
+  },
+  "result": {
+    "id": "double_edged_enchantments:exp_needle",
+    "components": {
+      "minecraft:damage": 1
+    },
+    "count": 1
+  }
+}

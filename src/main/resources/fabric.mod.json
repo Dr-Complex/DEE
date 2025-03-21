@@ -1,0 +1,40 @@
+{
+	"schemaVersion": 1,
+	"id": "double_edged_enchantments",
+	"version": "${version}",
+	"name": "Double Edged Enchantments",
+	"description": "This is an example description! Tell everyone what your mod is about!",
+	"authors": [
+		"Me!"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/double_edged_enchantments/cursed_book.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+          "com.dr_complex.double_edged_enchantments.DEE_Common"
+		],
+		"fabric-datagen": [
+			"com.dr_complex.double_edged_enchantments.DEE_DataGen"
+		],
+		"client": [
+			"com.dr_complex.double_edged_enchantments.DEE_Client"
+		]
+	},
+	"mixins": [
+		"double_edged_enchantments.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.16.10",
+		"minecraft": "~1.21.4",
+		"java": ">=21",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}

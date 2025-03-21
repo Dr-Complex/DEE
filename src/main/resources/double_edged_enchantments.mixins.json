@@ -1,0 +1,24 @@
+{
+  "required": true,
+  "package": "com.dr_complex.double_edged_enchantments.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "mixins": [
+    "ArrowEntityMixin",
+    "AttributeModifierMixin",
+    "CrossbowMixin",
+    "CursedItemStackMixin",
+    "EnchantmentHelperMixin",
+    "LivingMixin",
+    "LootTables",
+    "MobMixin",
+    "PersistentProjectileEntityMixin",
+    "PlayerMixin",
+    "RangedWeaponItemMixin",
+    "RangedWeaponMixin",
+    "ReturnItemStackMixin",
+    "StunnedMixin"
+  ]
+}

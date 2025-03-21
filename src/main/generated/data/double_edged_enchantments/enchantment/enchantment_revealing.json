@@ -1,0 +1,30 @@
+{
+  "anvil_cost": 2,
+  "description": {
+    "translate": "enchantment.double_edged_enchantments.enchantment_revealing"
+  },
+  "effects": {
+    "minecraft:attributes": [
+      {
+        "amount": 2.5,
+        "attribute": "minecraft:max_absorption",
+        "id": "double_edged_enchantments:enchantment_revealing",
+        "operation": "add_value"
+      }
+    ]
+  },
+  "max_cost": {
+    "base": 10,
+    "per_level_above_first": 2
+  },
+  "max_level": 1,
+  "min_cost": {
+    "base": 5,
+    "per_level_above_first": 2
+  },
+  "slots": [
+    "any"
+  ],
+  "supported_items": "#minecraft:enchantable/vanishing",
+  "weight": 1
+}

@@ -1,0 +1,5 @@
+// 1.21.4	-999999999-01-01T00:00:00	Double Edged Enchantments/Tags for minecraft:item
+2711a2200ad1ad6eb38fce88823f5259a9241620 data/double_edged_enchantments/tags/item/arrow_shoot_enchantable.json
+bf55fc7bbfec2bc1c5e0c767ecf29be8a3148698 data/double_edged_enchantments/tags/item/shoot_enchantable.json
+93291dc433bfe3d4c51c0855a1fd07ef766b11dc data/double_edged_enchantments/tags/item/spear_weapon.json
+df3514e12a5370a0eafeb405d2040613d98f1070 data/minecraft/tags/item/enchantable/vanishing.json

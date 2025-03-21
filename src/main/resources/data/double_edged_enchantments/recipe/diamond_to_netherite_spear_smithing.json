@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smithing_transform",
+  "base": "double_edged_enchantments:diamond_spear",
+  "addition": "minecraft:netherite_ingot",
+  "template": "minecraft:netherite_upgrade_smithing_template",
+  "result": {
+    "id": "double_edged_enchantments:netherite_spear",
+    "count": 1
+  }
+}
