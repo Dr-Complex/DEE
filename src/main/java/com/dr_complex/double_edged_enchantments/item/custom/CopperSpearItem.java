@@ -30,13 +30,20 @@ import org.jetbrains.annotations.NotNull;
 
 public class CopperSpearItem extends Item implements ProjectileItem {
 
+    private static final float roll = 0.4f;
+    private static final float power = 1.5f;
+    private static final float spread = 2f;
+    private static final float speed = 0.9f;
+    private static final float draw_time = 12.5f;
+    public static final float damage = 3f;
+
     public CopperSpearItem(Item.Settings settings) {
         super(settings);
     }
 
     @Override
-    public boolean canMine(BlockState state, World world, BlockPos pos, PlayerEntity miner) {
-        return !miner.isCreative();
+    public boolean canMine(ItemStack stack, BlockState state, World world, BlockPos pos, LivingEntity user) {
+        return !user.isInCreativeMode();
     }
 
     @Override
@@ -63,24 +70,19 @@ public class CopperSpearItem extends Item implements ProjectileItem {
     public boolean onStoppedUsing(ItemStack stack, World world, LivingEntity user, int remainingUseTicks) {
         if (user instanceof PlayerEntity player) {
             int i = this.getMaxUseTime(stack, user) - remainingUseTicks;
-            if (i < 11.5f) {
+            if (i < draw_time) {
                 return false;
             } else {
                 player.incrementStat(Stats.USED.getOrCreateStat(this));
                 if(world instanceof ServerWorld serverWorld){
                     stack.damage(1,player);
-                    CopperSpearEntity copperSpear = CopperSpearEntity.spawnWithVelocity(CopperSpearEntity::new,serverWorld, stack, player, 0F, 2.15F, 0.35F);
+                    CopperSpearEntity copperSpear = CopperSpearEntity.spawnWithVelocity(CopperSpearEntity::new,serverWorld, stack, player, roll, power, spread);
                     if (player.isInCreativeMode()) {
                         copperSpear.pickupType = PersistentProjectileEntity.PickupPermission.CREATIVE_ONLY;
                     } else {
                         player.getInventory().removeOne(stack);
                     }
-                    world.playSoundFromEntity(null,
-                            SoundEvents.ENTITY_EXPERIENCE_BOTTLE_THROW,
-                            SoundCategory.NEUTRAL,
-                            1,
-                            0.5f + 2f/(world.random.nextFloat() + 1f)
-                    );
+                    world.playSoundFromEntity(null, player,SoundEvents.ENTITY_ARMOR_STAND_HIT,SoundCategory.NEUTRAL,1.0f,1.05f);
                     return true;
                 }
             }
@@ -99,19 +101,14 @@ public class CopperSpearItem extends Item implements ProjectileItem {
     }
 
     @Override
-    public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
-        return true;
-    }
-
-    @Override
     public void postDamageEntity(@NotNull ItemStack stack, LivingEntity target, LivingEntity attacker) {
         stack.damage(1, attacker, EquipmentSlot.MAINHAND);
     }
 
     public static AttributeModifiersComponent createAttributeModifiers() {
         return AttributeModifiersComponent.builder()
-                .add(EntityAttributes.ATTACK_DAMAGE, new EntityAttributeModifier(BASE_ATTACK_DAMAGE_MODIFIER_ID, 3.375f, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND)
-                .add(EntityAttributes.ATTACK_SPEED, new EntityAttributeModifier(BASE_ATTACK_SPEED_MODIFIER_ID, 0.75f-3f, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND)
+                .add(EntityAttributes.ATTACK_DAMAGE, new EntityAttributeModifier(BASE_ATTACK_DAMAGE_MODIFIER_ID, damage, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND)
+                .add(EntityAttributes.ATTACK_SPEED, new EntityAttributeModifier(BASE_ATTACK_SPEED_MODIFIER_ID, speed, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND)
                 .build();
     }
 }

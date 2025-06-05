@@ -8,6 +8,7 @@ import com.dr_complex.double_edged_enchantments.item.DEE_ItemGroup;
 import com.dr_complex.double_edged_enchantments.item.DEE_Items;
 import com.dr_complex.double_edged_enchantments.screen.DEE_ScreenHandlers;
 import com.dr_complex.double_edged_enchantments.utils.DEE_DataComponentTypes;
+import com.dr_complex.double_edged_enchantments.utils.DEE_ItemToolTips;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.Contract;
@@ -35,6 +36,7 @@ public final class DEE_Common implements ModInitializer {
         DEE_ScreenHandlers.LoadScreens();
         DEE_ItemGroup.LoadItemGroups();
         DEE_BlockEntityTypes.LoadBlockEntityTypes();
+        DEE_ItemToolTips.LoadItemToolTips();
         LOGGER.info("Ended with mod : {}", MOD_ID);
     }
 }

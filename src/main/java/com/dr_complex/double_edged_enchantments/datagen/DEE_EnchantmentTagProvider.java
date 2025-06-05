@@ -38,7 +38,6 @@ public class DEE_EnchantmentTagProvider extends FabricTagProvider.EnchantmentTag
                .add(DEE_Enchantments.CURSE_NECROPHOBIA)
                .add(DEE_Enchantments.CURSE_DROWNING)
                .add(DEE_Enchantments.CURSE_ASHES)
-               .add(DEE_Enchantments.CURSE_HIDDEN)
                .add(DEE_Enchantments.CURSE_TIDES)
                .add(DEE_Enchantments.CURSE_FLAMMABLE)
                .add(DEE_Enchantments.CURSE_SMOKE)
@@ -64,7 +63,6 @@ public class DEE_EnchantmentTagProvider extends FabricTagProvider.EnchantmentTag
         getOrCreateTagBuilder(EnchantmentTags.IN_ENCHANTING_TABLE)
                 .add(DEE_Enchantments.ENCHANTMENT_LUCKY)
                 .add(DEE_Enchantments.ENCHANTMENT_CRITICALITY)
-                .add(DEE_Enchantments.ENCHANTMENT_REVEALING)
                 .add(DEE_Enchantments.NM_SHRUNKEN)
                 .add(DEE_Enchantments.NM_GROWTH)
                 .add(DEE_Enchantments.ENCHANTMENT_ACCURATE)
@@ -116,7 +114,6 @@ public class DEE_EnchantmentTagProvider extends FabricTagProvider.EnchantmentTag
                 .add(DEE_Enchantments.ENCHANTMENT_LUCKY)
                 .add(DEE_Enchantments.ENCHANTMENT_ACCURATE)
                 .add(DEE_Enchantments.ENCHANTMENT_MOON)
-                .add(DEE_Enchantments.ENCHANTMENT_REVEALING)
                 .add(DEE_Enchantments.ENCHANTMENT_RETURN)
                 .add(DEE_Enchantments.ENCHANTMENT_ABSORBING);
     }

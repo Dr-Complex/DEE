@@ -46,6 +46,11 @@ public class DEE_Entities {
             EntityType.Builder.<CopperSpearEntity>create(CopperSpearEntity::new, SpawnGroup.MISC).dimensions(0.25f,0.25f)
                     .build(RegistryKey.of(RegistryKeys.ENTITY_TYPE,DEE_Common.id("copper_spear_entity"))));
 
+    public static final EntityType<JettatiumSpearEntity> JETTATIUM_SPEAR_ENTITY_TYPE = Registry.register(
+            Registries.ENTITY_TYPE,DEE_Common.id("jettarium_spear_entity"),
+            EntityType.Builder.<JettatiumSpearEntity>create(JettatiumSpearEntity::new, SpawnGroup.MISC).dimensions(0.25f,0.25f)
+                    .build(RegistryKey.of(RegistryKeys.ENTITY_TYPE,DEE_Common.id("jettatium_spear_entity"))));
+
     public static void LoadEntities(){
         DEE_Common.LOGGER.info("Entities are now shipped by shipping ships");
     }

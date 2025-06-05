@@ -11,6 +11,10 @@
   "item.double_edged_enchantments.diamond_spear": "Diamond Spear",
   "item.double_edged_enchantments.netherite_spear": "Netherite Spear",
   "item.double_edged_enchantments.copper_spear": "Copper Spear",
+  "item.double_edged_enchantments.exp_needle.tooltip": "%1$s / 256",
+  "item.double_edged_enchantments.exp_needle.tooltip.fallback": "none",
+  "item.double_edged_enchantments.reverted_ender_pearl.tooltip": "%1$s",
+  "item.double_edged_enchantments.reverted_ender_pearl.tooltip.fallback": "null",
 
   "entity.double_edged_enchantments.wooden_spear_entity": "Wooden Spear",
   "entity.double_edged_enchantments.stone_spear_entity": "Stone Spear",
@@ -19,6 +23,7 @@
   "entity.double_edged_enchantments.diamond_spear_entity": "Diamond Spear",
   "entity.double_edged_enchantments.netherite_spear_entity": "Netherite Spear",
   "entity.double_edged_enchantments.copper_spear_entity": "Copper Spear",
+  "entity.double_edged_enchantments.jettatium_spear_entity": "Jettatium Spear",
 
   "enchantment.double_edged_enchantments.curse_entomophobia": "Curse of Entomophobia",
   "enchantment.double_edged_enchantments.curse_rebuilding": "Curse of Rebuilding",
@@ -67,7 +72,6 @@
   "enchantment.double_edged_enchantments.enchantment_criticality": "Criticality",
   "enchantment.double_edged_enchantments.enchantment_moon": "Moon",
   "enchantment.double_edged_enchantments.enchantment_return": "Return",
-  "enchantment.double_edged_enchantments.enchantment_revealing": "Revealing",
   "enchantment.double_edged_enchantments.enchantment_accurate": "Accurate",
   "enchantment.double_edged_enchantments.enchantment_aerodynamic": "Aerodynamic",
 
@@ -77,9 +81,13 @@
   "tag.item.double_edged_enchantments.arrow_shoot_enchantable": "Arrow Shoot Enchantable",
   "tag.item.double_edged_enchantments.shoot_enchantable": "Shoot Enchantable",
   "tag.item.double_edged_enchantments.spear_weapon": "Spear Weapon",
+  "tag.item.double_edged_enchantments.repair_jattatium": "Repair Jattetium",
   "tag.enchantment.double_edged_enchantments.all_good": "GOOD",
 
   "stat.double_edged_enchantments.cursed_stat": "Cursed Item",
 
-  "death.attack.curse_backlash": "%1$s was Cursed to death"
+  "death.attack.curse_backlash": "%1$s was Cursed to death",
+
+  "container.hexing_table": "Hexing Table"
+
 }

@@ -29,6 +29,6 @@
   "slots": [
     "mainhand"
   ],
-  "supported_items": "#minecraft:enchantable/trident",
+  "supported_items": "#double_edged_enchantments:spear_weapon",
   "weight": 5
 }

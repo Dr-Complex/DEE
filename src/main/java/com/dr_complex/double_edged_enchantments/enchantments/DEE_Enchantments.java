@@ -414,26 +414,6 @@ public class DEE_Enchantments {
                 EnchantmentLevelBasedValue.constant(-0.15f), EntityAttributeModifier.Operation.ADD_VALUE))
         );
 
-        register(registerable,ENCHANTMENT_REVEALING,Enchantment.builder(Enchantment.definition(
-                itemsLookup.getOrThrow(ItemTags.VANISHING_ENCHANTABLE),
-                        1,1,
-                        Enchantment.leveledCost(5,2),
-                        Enchantment.leveledCost(10,2),2,AttributeModifierSlot.ANY
-        )).addEffect(EnchantmentEffectComponentTypes.ATTRIBUTES,new AttributeEnchantmentEffect(
-                DEE_Common.id("enchantment_revealing"),EntityAttributes.MAX_ABSORPTION,
-                EnchantmentLevelBasedValue.constant(2.5f), EntityAttributeModifier.Operation.ADD_VALUE))
-        );
-
-        register(registerable,CURSE_HIDDEN,Enchantment.builder(Enchantment.definition(
-                itemsLookup.getOrThrow(ItemTags.VANISHING_ENCHANTABLE),
-                        1,1,
-                        Enchantment.leveledCost(5,2),
-                        Enchantment.leveledCost(10,2),2,AttributeModifierSlot.ANY
-        )).addEffect(EnchantmentEffectComponentTypes.ATTRIBUTES,new AttributeEnchantmentEffect(
-                DEE_Common.id("curse_hidden"),EntityAttributes.MAX_ABSORPTION,
-                EnchantmentLevelBasedValue.constant(-1.5f), EntityAttributeModifier.Operation.ADD_VALUE))
-        );
-
         register(registerable,CURSE_SMOKE, Enchantment.builder(Enchantment.definition(
                 itemsLookup.getOrThrow(DEE_Tags.Items.ARROW_SHOOT_ENCHANTABLE),
                 1,10,

@@ -1,0 +1,39 @@
+/tp @s 0 0 0 0 0
+/tp 0 0 0
+/tp @s 0 0 0 0 0
+/gamerule doDaylightCycle true
+/time set 0
+/tick rate 100
+/tick rate 2000
+/tick rate
+/tick rate 20
+/tick rate 2000
+/tick rate 20
+/time set 0
+/tick rate 2000
+/tick freeze
+/tick unfreeze
+/tick freeze
+/time set 0
+/tick rate 2000
+/time set 0
+/tick rate 20
+/tp @s ~100 ~ ~ ~ ~
+/tp @s ~-100 ~ ~ ~ ~
+/tick rate 2000
+/tp @s ~100 ~ ~ ~ ~
+/tp @s ~-100 ~ ~ ~ ~
+/tp @s ~100 ~ ~ ~ ~
+/tick rate 2000
+/kill @e[type=!minecraft:player]
+/tick rate 20
+/xp set @s 100 levels
+/xp set @s 300 levels
+/kill @e[type=!minecraft:player]
+/enchant @s minecraft:multishot 10
+/kill @e[type=!minecraft:player]
+/enchant @s double_edged_enchantments:enchantment_accurate 5
+/kill @e[type=!minecraft:player]
+/tp @s 0 0 0 0 0
+/kill @e[type=!minecraft:player]
+/tp @s 0 0 0 0 0

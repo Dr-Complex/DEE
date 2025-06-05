@@ -2,6 +2,7 @@ package com.dr_complex.double_edged_enchantments.mixin;
 
 import net.minecraft.entity.*;
 import net.minecraft.entity.attribute.AttributeContainer;
+import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.attribute.EntityAttributeInstance;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
@@ -39,7 +40,11 @@ public abstract class LivingMixin extends Entity implements Attackable {
 
     @Shadow public abstract float getMovementSpeed();
 
-    @Shadow protected abstract float getKnockbackAgainst(Entity target, DamageSource damageSource);
+    @Shadow protected abstract float getAttackKnockbackAgainst(Entity target, DamageSource damageSource);
+
+    @Shadow public abstract double getAttributeValue(RegistryEntry<EntityAttribute> attribute);
+
+    @Shadow public abstract void onAttacking(Entity target);
 
     public LivingMixin(EntityType<?> type, World world) {
         super(type, world);

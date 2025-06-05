@@ -85,7 +85,7 @@ public abstract class ArrowEntityMixin extends PersistentProjectileEntity {
             ci.cancel();
         }else if(this.getWorld().random.nextFloat() >= 1f/(this.dataTracker.get(level_of_smoke) + 1)){
             if(!this.isInGround()){
-                this.getWorld().addParticle(
+                this.getWorld().addParticleClient(
                         ParticleTypes.CAMPFIRE_SIGNAL_SMOKE,
                         this.getParticleX(0.25),
                         this.getRandomBodyY(),
@@ -94,7 +94,7 @@ public abstract class ArrowEntityMixin extends PersistentProjectileEntity {
                 );
             }else {
                 this.turn += 75f;
-                this.getWorld().addParticle(
+                this.getWorld().addParticleClient(
                         ParticleTypes.CAMPFIRE_SIGNAL_SMOKE,
                         this.getParticleX(0.25),
                         this.getRandomBodyY(),

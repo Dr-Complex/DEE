@@ -4,13 +4,10 @@ import com.dr_complex.double_edged_enchantments.utils.DEE_DataComponentTypes;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.world.World;
-
-import java.util.List;
 
 public class EXP_Needle extends Item {
     int increased = 0;
@@ -58,14 +55,8 @@ public class EXP_Needle extends Item {
         }
 
         user.experienceLevel -= increased;
+
         return increased != 0 ? ActionResult.SUCCESS : ActionResult.FAIL;
     }
 
-    @Override
-    public void appendTooltip(ItemStack stack, TooltipContext context, List<Text> tooltip, TooltipType type) {
-        if(stack.get(DEE_DataComponentTypes.XP_CONTAINER) != null){
-            tooltip.add(Text.of(stack.get(DEE_DataComponentTypes.XP_CONTAINER) + " / 256 "));
-        }
-        super.appendTooltip(stack, context, tooltip, type);
-    }
 }

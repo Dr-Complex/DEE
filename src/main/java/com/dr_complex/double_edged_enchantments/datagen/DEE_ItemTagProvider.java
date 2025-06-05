@@ -4,6 +4,7 @@ import com.dr_complex.double_edged_enchantments.item.DEE_Items;
 import com.dr_complex.double_edged_enchantments.utils.DEE_Tags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
+import net.minecraft.item.Items;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.ItemTags;
 
@@ -22,6 +23,7 @@ public class DEE_ItemTagProvider extends FabricTagProvider.ItemTagProvider {
 
         getOrCreateTagBuilder(DEE_Tags.Items.SPEAR_WEAPONS)
                 .addOptionalTag(ItemTags.TRIDENT_ENCHANTABLE)
+                .add(DEE_Items.JETTATIUM_SPEAR)
                 .add(DEE_Items.WOODEN_SPEAR)
                 .add(DEE_Items.STONE_SPEAR)
                 .add(DEE_Items.GOLDEN_SPEAR)
@@ -36,5 +38,23 @@ public class DEE_ItemTagProvider extends FabricTagProvider.ItemTagProvider {
 
         getOrCreateTagBuilder(ItemTags.VANISHING_ENCHANTABLE)
                 .addTag(DEE_Tags.Items.SPEAR_WEAPONS);
+
+        getOrCreateTagBuilder(DEE_Tags.Items.REPAIR_JATTATIUM)
+                .add(Items.OMINOUS_BOTTLE);
+
+        getOrCreateTagBuilder(ItemTags.SWORDS)
+                .add(DEE_Items.JETTATIUM_SWORD);
+
+        getOrCreateTagBuilder(ItemTags.PICKAXES)
+                .add(DEE_Items.JETTATIUM_PICKAXE);
+
+        getOrCreateTagBuilder(ItemTags.AXES)
+                .add(DEE_Items.JETTATIUM_AXE);
+
+        getOrCreateTagBuilder(ItemTags.SHOVELS)
+                .add(DEE_Items.JETTATIUM_SHOVEL);
+
+        getOrCreateTagBuilder(ItemTags.HOES)
+                .add(DEE_Items.JETTATIUM_HOE);
     }
 }

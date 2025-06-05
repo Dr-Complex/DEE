@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "double_edged_enchantments:item/jettatium_pickaxe"
+  }
+}

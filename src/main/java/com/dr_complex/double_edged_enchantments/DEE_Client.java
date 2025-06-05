@@ -22,6 +22,7 @@ public final class DEE_Client implements ClientModInitializer {
         EntityRendererRegistry.register(DEE_Entities.IRON_SPEAR_ENTITY_TYPE, AbstractSpearEntityRenderer::new);
         EntityRendererRegistry.register(DEE_Entities.DIAMOND_SPEAR_ENTITY_TYPE, AbstractSpearEntityRenderer::new);
         EntityRendererRegistry.register(DEE_Entities.NETHERITE_SPEAR_ENTITY_TYPE, AbstractSpearEntityRenderer::new);
+        EntityRendererRegistry.register(DEE_Entities.JETTATIUM_SPEAR_ENTITY_TYPE, AbstractSpearEntityRenderer::new);
         HandledScreens.register(DEE_ScreenHandlers.HEXING_TABLE_SCREEN_HANDLER, HexingTableScreen::new);
     }
 }

@@ -51,10 +51,10 @@ public abstract class StunnedMixin extends LivingEntity{
 
     @Inject(method = "attack", at = @At("HEAD"))
     private void setStunTime(Entity target, CallbackInfo ci){
-        if(this.getInventory().getMainHandStack().hasEnchantments() && this.dataTracker.get(double_edged_enchantments$StunTime) <= 0){
-            var test1 = this.getInventory().getMainHandStack().getEnchantments().getEnchantments().stream().map(RegistryEntry::getIdAsString).toList();
+        if(this.getInventory().getSelectedStack().hasEnchantments() && this.dataTracker.get(double_edged_enchantments$StunTime) <= 0){
+            var test1 = this.getInventory().getSelectedStack().getEnchantments().getEnchantments().stream().map(RegistryEntry::getIdAsString).toList();
             var test2 = DEE_Enchantments.CURSE_STUNNED.getValue().toString();
-            var level = this.getInventory().getMainHandStack().getEnchantments().getEnchantmentEntries().stream().map(Object2IntMap.Entry::getIntValue).toList();
+            var level = this.getInventory().getSelectedStack().getEnchantments().getEnchantmentEntries().stream().map(Object2IntMap.Entry::getIntValue).toList();
             for (int i = 0; i < test1.size(); i++) {
                 if(test1.get(i).matches(test2)){
                     this.dataTracker.set(double_edged_enchantments$StunTime,

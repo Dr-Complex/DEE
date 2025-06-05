@@ -20,7 +20,7 @@ public class DEE_ModelProvider extends FabricModelProvider {
 
     @Override
     public void generateBlockStateModels(@NotNull BlockStateModelGenerator blockStateModelGenerator) {
-        blockStateModelGenerator.registerNorthDefaultHorizontalRotation(DEE_Blocks.HEXING_TABLE);
+        blockStateModelGenerator.registerSimpleCubeAll(DEE_Blocks.HEXING_TABLE);
     }
 
     @Override
@@ -33,5 +33,11 @@ public class DEE_ModelProvider extends FabricModelProvider {
         itemModelGenerator.registerCondition(DEE_Items.EXP_NEEDLE, Condition, unbakedTrue, unbakedFalse);
         itemModelGenerator.register(DEE_Items.REVERED_ENDER_PEARL, Models.GENERATED);
         itemModelGenerator.register(DEE_Items.COPPER_NUGGET,Models.GENERATED);
+
+        itemModelGenerator.register(DEE_Items.JETTATIUM_SHOVEL,Models.HANDHELD);
+        itemModelGenerator.register(DEE_Items.JETTATIUM_HOE,Models.HANDHELD);
+        itemModelGenerator.register(DEE_Items.JETTATIUM_SWORD,Models.HANDHELD);
+        itemModelGenerator.register(DEE_Items.JETTATIUM_AXE,Models.HANDHELD);
+        itemModelGenerator.register(DEE_Items.JETTATIUM_PICKAXE,Models.HANDHELD);
     }
 }

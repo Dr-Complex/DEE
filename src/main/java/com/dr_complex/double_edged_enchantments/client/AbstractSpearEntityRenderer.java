@@ -25,17 +25,17 @@ public class AbstractSpearEntityRenderer extends EntityRenderer<AbstractSpearEnt
 
     protected SpearEntityModel model;
 
-    private static final Map<SpearType, Identifier> TEXTURES = Util.make(Maps.newEnumMap(SpearType.class), map ->{
-        map.put(SpearType.Wooden,DEE_Common.id("textures/entity/spear/wooden.png"));
-        map.put(SpearType.Stone,DEE_Common.id("textures/entity/spear/stone.png"));
-        map.put(SpearType.Golden,DEE_Common.id("textures/entity/spear/golden.png"));
-        map.put(SpearType.Iron,DEE_Common.id("textures/entity/spear/iron.png"));
-        map.put(SpearType.Diamond,DEE_Common.id("textures/entity/spear/diamond.png"));
-        map.put(SpearType.Netherite, DEE_Common.id("textures/entity/spear/netherite.png"));
-        map.put(SpearType.Copper,DEE_Common.id("textures/entity/spear/copper.png"));
-    });
-
-
+    private static final Map<SpearType, Identifier> TEXTURES = Map.of(
+            SpearType.Wooden,DEE_Common.id("textures/entity/spear/wooden.png"),
+            SpearType.Stone,DEE_Common.id("textures/entity/spear/stone.png"),
+            SpearType.Golden,DEE_Common.id("textures/entity/spear/golden.png"),
+            SpearType.Iron,DEE_Common.id("textures/entity/spear/iron.png"),
+            SpearType.Diamond,DEE_Common.id("textures/entity/spear/diamond.png"),
+            SpearType.Netherite, DEE_Common.id("textures/entity/spear/netherite.png"),
+            SpearType.Copper,DEE_Common.id("textures/entity/spear/copper.png"),
+            SpearType.Jettatium,DEE_Common.id("textures/entity/spear/jettatium.png")
+    );
+    
     public AbstractSpearEntityRenderer(EntityRendererFactory.Context context) {
         super(context);
         this.model = new SpearEntityModel(context.getPart(SpearEntityModel.Main));

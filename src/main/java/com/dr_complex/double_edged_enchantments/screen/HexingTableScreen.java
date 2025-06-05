@@ -8,11 +8,8 @@ import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
 import net.minecraft.client.render.DiffuseLighting;
 import net.minecraft.client.render.RenderLayer;
-import net.minecraft.component.DataComponentTypes;
-import net.minecraft.component.type.ItemEnchantmentsComponent;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.screen.slot.Slot;
@@ -36,7 +33,6 @@ public class HexingTableScreen extends HandledScreen<HexingTableScreenHandler> {
 
     public HexingTableScreen(HexingTableScreenHandler handler, PlayerInventory inventory, Text title) {
         super(handler, inventory, title);
-        handler.setInventoryChangeListener(this::onInventoryChanged);
         this.ticks = 0;
     }
 
@@ -46,8 +42,8 @@ public class HexingTableScreen extends HandledScreen<HexingTableScreenHandler> {
         int x = this.x;
         int y = this.y;
         context.drawTexture(RenderLayer::getGuiTextured, MainTexture,x,y,0,0,backgroundWidth,backgroundHeight,256,256);
-        Slot LevelerSlot = this.handler.getMaterial_UD_Slot();
-        Slot ConductorSlot = this.handler.getMaterial_EC_Slot();
+        Slot LevelerSlot = this.handler.getSlot(1);
+        Slot ConductorSlot = this.handler.getSlot(2);
 
         if(!LevelerSlot.hasStack()){
             if(ticks >= 300){
@@ -132,7 +128,6 @@ public class HexingTableScreen extends HandledScreen<HexingTableScreenHandler> {
                 double d = mouseX - (double) (i + l * 16);
                 double e = mouseY - (double) (j + k * 16);
                 int n = k * 6 + l;
-                n = n >= this.handler.getEnchants().size() ? -1:n;
                 if (d >= 0.0 && e >= 0.0 && d < 16 && e < 16 && this.handler.onButtonClick(Objects.requireNonNull(this.client).player, n)) {
                     Objects.requireNonNull(this.client.interactionManager).clickButton(this.handler.syncId, n);
                     return true;
@@ -142,15 +137,4 @@ public class HexingTableScreen extends HandledScreen<HexingTableScreenHandler> {
         return super.mouseClicked(mouseX, mouseY, button);
     }
 
-    private void onInventoryChanged() {
-        ItemStack MAIN_INPUT = this.handler.getMainSlot().getStack();
-        ItemStack EC_INPUT = this.handler.getMaterial_EC_Slot().getStack();
-        ItemStack UD_INPUT = this.handler.getMaterial_UD_Slot().getStack();
-        if(!MAIN_INPUT.isEmpty() && !EC_INPUT.isEmpty() && !UD_INPUT.isEmpty()){
-            ItemEnchantmentsComponent temp = MAIN_INPUT.getOrDefault(DataComponentTypes.ENCHANTMENTS, ItemEnchantmentsComponent.DEFAULT);
-            DEE_Common.LOGGER.info("enchantments = {}", temp);
-        }else{
-            this.handler.setEnchants(List.of());
-        }
-    }
 }

@@ -1,4 +1,4 @@
-// 1.21.4	-999999999-01-01T00:00:00	Double Edged Enchantments/Tags for minecraft:enchantment
-6068efb47fb47446801abe4dd3247a99aed2007b data/double_edged_enchantments/tags/enchantment/all_good.json
-6fefda534ad6b77bd0a53022ce4690135405cd79 data/minecraft/tags/enchantment/curse.json
-30844a6581b6b982711fa36e37e32807eab71ab6 data/minecraft/tags/enchantment/in_enchanting_table.json
+// 1.21.5	-999999999-01-01T00:00:00	Double Edged Enchantments/Tags for minecraft:enchantment
+f549f3192d6394b70222b2e3e7ee892e77df19e7 data/double_edged_enchantments/tags/enchantment/all_good.json
+061ecd915dbcd46ad8f48d59acefe01e1f7aea24 data/minecraft/tags/enchantment/curse.json
+747d0308bbd7d438a4fc72f9f9facd1b79365866 data/minecraft/tags/enchantment/in_enchanting_table.json

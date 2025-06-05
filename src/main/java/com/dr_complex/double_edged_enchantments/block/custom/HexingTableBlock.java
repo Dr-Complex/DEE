@@ -2,39 +2,39 @@ package com.dr_complex.double_edged_enchantments.block.custom;
 
 import com.dr_complex.double_edged_enchantments.entity.block.DEE_BlockEntityTypes;
 import com.dr_complex.double_edged_enchantments.entity.block.HexingTableBlockEntity;
+import com.dr_complex.double_edged_enchantments.screen.HexingTableScreenHandler;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.BlockWithEntity;
+import net.minecraft.block.ShapeContext;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.ai.pathing.NavigationType;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.screen.NamedScreenHandlerFactory;
+import net.minecraft.screen.ScreenHandlerContext;
+import net.minecraft.screen.SimpleNamedScreenHandlerFactory;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
-import net.minecraft.state.StateManager;
-import net.minecraft.state.property.EnumProperty;
-import net.minecraft.state.property.Properties;
+import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
-import net.minecraft.util.BlockMirror;
-import net.minecraft.util.BlockRotation;
 import net.minecraft.util.ItemScatterer;
+import net.minecraft.util.Nameable;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Direction;
+import net.minecraft.util.shape.VoxelShape;
+import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class HexingTableBlock extends BlockWithEntity {
 
-    public static final EnumProperty<Direction> FACING = Properties.HORIZONTAL_FACING;
-
     public static final MapCodec<HexingTableBlock> CODEC = createCodec(HexingTableBlock::new);
+    private static final VoxelShape SHAPE = Block.createColumnShape(16.0, 0.0, 8.0);
 
     public HexingTableBlock(Settings settings) {
         super(settings);
@@ -48,33 +48,15 @@ public class HexingTableBlock extends BlockWithEntity {
     @Override
     protected ActionResult onUse(BlockState state, @NotNull World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
         if(!world.isClient){
-            NamedScreenHandlerFactory screenHandlerFactory = state.createScreenHandlerFactory(world, pos);
-            if(screenHandlerFactory != null) {
-                player.openHandledScreen(screenHandlerFactory);
-            }
+            player.openHandledScreen(state.createScreenHandlerFactory(world,pos));
         }
-        world.playSound(player,pos, SoundEvents.ENTITY_ARROW_HIT_PLAYER, SoundCategory.BLOCKS,1f,0.5f);
-        return ActionResult.SUCCESS;
-    }
-
-    @Override
-    public @Nullable BlockState getPlacementState(@NotNull ItemPlacementContext ctx) {
-        return this.getDefaultState().with(FACING,ctx.getHorizontalPlayerFacing().getOpposite());
-    }
-
-    @Override
-    protected void appendProperties(StateManager.@NotNull Builder<Block, BlockState> builder) {
-        builder.add(FACING);
-    }
-
-    @Override
-    protected BlockState rotate(@NotNull BlockState state, @NotNull BlockRotation rotation) {
-        return state.with(FACING, rotation.rotate(state.get(FACING)));
-    }
-
-    @Override
-    protected BlockState mirror(@NotNull BlockState state, @NotNull BlockMirror mirror) {
-        return state.rotate(mirror.getRotation(state.get(FACING)));
+        if(player.isSneaking()){
+            world.playSound(player,pos, SoundEvents.ENTITY_GENERIC_DEATH, SoundCategory.BLOCKS,1.0f,0.25f);
+            return ActionResult.FAIL;
+        }else {
+            world.playSound(player,pos, SoundEvents.ENTITY_ARROW_HIT_PLAYER, SoundCategory.BLOCKS,1.0f,0.25f);
+            return ActionResult.SUCCESS;
+        }
     }
 
     @Override
@@ -93,19 +75,23 @@ public class HexingTableBlock extends BlockWithEntity {
     }
 
     @Override
-    protected BlockRenderType getRenderType(BlockState state) {
-        return BlockRenderType.MODEL;
+    protected void onStateReplaced(BlockState state, ServerWorld world, BlockPos pos, boolean moved) {
+        ItemScatterer.onStateReplaced(state, world, pos);
     }
 
-    @Override
-    protected void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
-        if(state.getBlock() != newState.getBlock()){
-            BlockEntity blockEntity = world.getBlockEntity(pos);
-            if(blockEntity instanceof HexingTableBlockEntity tableBlockEntity){
-                ItemScatterer.spawn(world,pos,tableBlockEntity.inventory);
-                world.updateComparators(pos,this);
-            }
-            super.onStateReplaced(state, world, pos, newState, moved);
+    @Nullable
+    protected NamedScreenHandlerFactory createScreenHandlerFactory(BlockState state, World world, BlockPos pos) {
+        BlockEntity blockEntity = world.getBlockEntity(pos);
+        if (blockEntity instanceof HexingTableBlockEntity) {
+            Text text = ((Nameable)blockEntity).getDisplayName();
+            return new SimpleNamedScreenHandlerFactory((syncId, inventory, player) -> new HexingTableScreenHandler(syncId,inventory,ScreenHandlerContext.create(world,pos)), text);
+        } else {
+            return null;
         }
     }
+
+    protected VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+        return SHAPE;
+    }
+
 }

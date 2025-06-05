@@ -19,8 +19,8 @@ public record Curse_Fumbling() implements EnchantmentEntityEffect {
         if (context.owner() != null){
             if(context.owner() instanceof PlayerEntity player){
                 if(cooldown < 0){
-                    player.dropStack(world,player.getInventory().getMainHandStack());
-                    player.getInventory().removeStack(player.getInventory().selectedSlot);
+                    player.dropStack(world,player.getInventory().getSelectedStack());
+                    player.getInventory().removeStack(player.getInventory().getSelectedSlot());
                     cooldown = world.random.nextBetween(200 - level * 10,250 - level*12);
                     player.sendMessage(Text.literal("oops"),true);
                 }else {

@@ -26,7 +26,7 @@ public abstract class AbstractSpearEntityModel<T extends SpearEntityRenderState>
                 .uv(14, 14).cuboid(-0.5F, -5.85F, -0.5F, 1.0F, 1.0F, 1.0F, new Dilation(0.0F))
                 .uv(4, 9).cuboid(-0.5F, -3.85F, -1.0F, 1.0F, 6.0F, 2.0F, new Dilation(0.0F))
                 .uv(14, 0).cuboid(0.5F, -1.85F, -1.0F, 1.0F, 3.0F, 2.0F, new Dilation(0.0F))
-                .uv(14, 0).cuboid(-1.5F, -1.85F, -1.0F, 1.0F, 3.0F, 2.0F, new Dilation(0.0F)), ModelTransform.pivot(0.0F, 4.85F, 0.0F));
+                .uv(14, 0).cuboid(-1.5F, -1.85F, -1.0F, 1.0F, 3.0F, 2.0F, new Dilation(0.0F)), ModelTransform.origin(0.0F, 4.85F, 0.0F));
         return TexturedModelData.of(modelData, 32, 32);
     }
 

@@ -1,7 +1,6 @@
 package com.dr_complex.double_edged_enchantments.item;
 
 import com.dr_complex.double_edged_enchantments.DEE_Common;
-import com.dr_complex.double_edged_enchantments.item.DEE_Items;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnchantmentLevelEntry;
@@ -23,16 +22,22 @@ public class DEE_ItemGroup {
                     .displayName(Text.translatable("item_group.double_edged_enchantments.dee_group"))
                     .entries((displayContext, entries) ->{
 
+                        entries.add(DEE_Items.COPPER_NUGGET);
                         entries.add(DEE_Items.REVERED_ENDER_PEARL);
                         entries.add(DEE_Items.EXP_NEEDLE);
-                        entries.add(DEE_Items.COPPER_NUGGET);
+                        entries.add(DEE_Items.JETTATIUM_SWORD);
+                        entries.add(DEE_Items.JETTATIUM_AXE);
+                        entries.add(DEE_Items.JETTATIUM_PICKAXE);
+                        entries.add(DEE_Items.JETTATIUM_SHOVEL);
+                        entries.add(DEE_Items.JETTATIUM_HOE);
                         entries.add(DEE_Items.WOODEN_SPEAR);
-                        entries.add(DEE_Items.STONE_SPEAR);
                         entries.add(DEE_Items.GOLDEN_SPEAR);
+                        entries.add(DEE_Items.STONE_SPEAR);
                         entries.add(DEE_Items.COPPER_SPEAR);
                         entries.add(DEE_Items.IRON_SPEAR);
                         entries.add(DEE_Items.DIAMOND_SPEAR);
                         entries.add(DEE_Items.NETHERITE_SPEAR);
+                        entries.add(DEE_Items.JETTATIUM_SPEAR);
                         entries.add(DEE_Items.HEXING_TABLE);
 
                         displayContext.lookup().getOptional(RegistryKeys.ENCHANTMENT).ifPresent(enchantmentImpl -> enchantmentImpl.streamEntries()

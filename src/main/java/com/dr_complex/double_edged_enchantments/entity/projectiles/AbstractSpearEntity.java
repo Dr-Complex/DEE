@@ -144,7 +144,7 @@ public abstract class AbstractSpearEntity extends PersistentProjectileEntity {
     @Override
     public void readCustomDataFromNbt(NbtCompound nbt) {
         super.readCustomDataFromNbt(nbt);
-        this.dealtDamage = nbt.getBoolean("DealtDamage");
+        this.dealtDamage = nbt.getBoolean("DealtDamage").orElse(false);
         this.dataTracker.set(LOYALTY, this.getLoyalty(this.getItemStack()));
     }
 

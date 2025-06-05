@@ -3,7 +3,7 @@
 	"texture_size": [32, 32],
 	"textures": {
 		"0": "double_edged_enchantments:item/spear_entity/stone",
-		"particle": "double_edged_enchantments:textures/entity/spear/stone"
+		"particle": "double_edged_enchantments:entity/spear/stone"
 	},
 	"elements": [
 		{
