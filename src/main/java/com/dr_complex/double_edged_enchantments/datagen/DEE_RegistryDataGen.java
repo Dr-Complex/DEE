@@ -22,6 +22,6 @@ public class DEE_RegistryDataGen extends FabricDynamicRegistryProvider {
 
     @Override
     public String getName() {
-        return "";
+        return "DEE_RegistryProvider";
     }
 }

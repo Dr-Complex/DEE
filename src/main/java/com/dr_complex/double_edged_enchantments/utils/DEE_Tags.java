@@ -19,6 +19,7 @@ public class DEE_Tags {
     public static class Items {
 
         public static final TagKey<Item> REPAIR_JATTATIUM = itemTagKey("repair_jattatium");
+        public static final TagKey<Item> REPAIR_COPPER = itemTagKey("repair_copper");
         public static final TagKey<Item> ARROW_SHOOT_ENCHANTABLE = itemTagKey("arrow_shoot_enchantable");
         public static final TagKey<Item> SHOOT_ENCHANTABLE = itemTagKey("shoot_enchantable");
         public static final TagKey<Item> SPEAR_WEAPONS = itemTagKey("spear_weapon");

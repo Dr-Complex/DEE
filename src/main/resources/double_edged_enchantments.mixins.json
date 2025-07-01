@@ -13,9 +13,9 @@
     "LivingMixin",
     "LootTables",
     "PersistentProjectileEntityMixin",
+    "PlayerMixin",
     "RangedWeaponItemMixin",
     "RangedWeaponMixin",
-    "ReturnItemStackMixin",
-    "StunnedMixin"
+    "ReturnItemStackMixin"
   ]
 }

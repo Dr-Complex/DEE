@@ -23,8 +23,15 @@ public class DEE_ItemGroup {
                     .entries((displayContext, entries) ->{
 
                         entries.add(DEE_Items.COPPER_NUGGET);
+                        entries.add(DEE_Items.RAW_JATTATIUM);
+                        entries.add(DEE_Items.CUT_JATTATIUM);
                         entries.add(DEE_Items.REVERED_ENDER_PEARL);
                         entries.add(DEE_Items.EXP_NEEDLE);
+                        entries.add(DEE_Items.COPPER_SWORD);
+                        entries.add(DEE_Items.COPPER_AXE);
+                        entries.add(DEE_Items.COPPER_PICKAXE);
+                        entries.add(DEE_Items.COPPER_SHOVEL);
+                        entries.add(DEE_Items.COPPER_HOE);
                         entries.add(DEE_Items.JETTATIUM_SWORD);
                         entries.add(DEE_Items.JETTATIUM_AXE);
                         entries.add(DEE_Items.JETTATIUM_PICKAXE);

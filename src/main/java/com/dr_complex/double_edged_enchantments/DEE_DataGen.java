@@ -21,6 +21,7 @@ public class DEE_DataGen implements DataGeneratorEntrypoint {
 		pack.addProvider(DEE_LootProvider::new);
 		pack.addProvider(DEE_RegistryDataGen::new);
 		pack.addProvider(DEE_EnchantmentTagProvider::new);
+		pack.addProvider(DEE_RecipeProvider::new);
 	}
 
 	@Override

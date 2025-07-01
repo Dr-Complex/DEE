@@ -33,7 +33,7 @@ public class JettatiumSpearItem extends Item implements ProjectileItem {
     private static final float roll = 0.8f;
     private static final float power = 2f;
     private static final float spread = 0.5f;
-    private static final float speed = 0f;
+    private static final float speed = 0.1f;
     private static final float draw_time = 20f;
     public static final float damage = 25f;
 
@@ -98,15 +98,10 @@ public class JettatiumSpearItem extends Item implements ProjectileItem {
         }
     }
 
-    @Override
-    public void postDamageEntity(@NotNull ItemStack stack, LivingEntity target, LivingEntity attacker) {
-        stack.damage(1, attacker, EquipmentSlot.MAINHAND);
-    }
-
     public static AttributeModifiersComponent createAttributeModifiers() {
         return AttributeModifiersComponent.builder()
                 .add(EntityAttributes.ATTACK_DAMAGE, new EntityAttributeModifier(BASE_ATTACK_DAMAGE_MODIFIER_ID, damage, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND)
-                .add(EntityAttributes.ATTACK_SPEED, new EntityAttributeModifier(BASE_ATTACK_SPEED_MODIFIER_ID, speed, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND)
+                .add(EntityAttributes.ATTACK_SPEED, new EntityAttributeModifier(BASE_ATTACK_SPEED_MODIFIER_ID, -4+speed, EntityAttributeModifier.Operation.ADD_VALUE), AttributeModifierSlot.MAINHAND)
                 .build();
     }
 }

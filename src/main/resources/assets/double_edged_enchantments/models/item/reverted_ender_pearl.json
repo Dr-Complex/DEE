@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "double_edged_enchantments:item/reverted_ender_pearl"
-  }
-}

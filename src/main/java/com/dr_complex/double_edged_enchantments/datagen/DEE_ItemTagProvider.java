@@ -17,11 +17,11 @@ public class DEE_ItemTagProvider extends FabricTagProvider.ItemTagProvider {
 
     @Override
     protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
-        getOrCreateTagBuilder(DEE_Tags.Items.ARROW_SHOOT_ENCHANTABLE)
+        valueLookupBuilder(DEE_Tags.Items.ARROW_SHOOT_ENCHANTABLE)
                 .addOptionalTag(ItemTags.CROSSBOW_ENCHANTABLE)
                 .addOptionalTag(ItemTags.BOW_ENCHANTABLE);
 
-        getOrCreateTagBuilder(DEE_Tags.Items.SPEAR_WEAPONS)
+        valueLookupBuilder(DEE_Tags.Items.SPEAR_WEAPONS)
                 .addOptionalTag(ItemTags.TRIDENT_ENCHANTABLE)
                 .add(DEE_Items.JETTATIUM_SPEAR)
                 .add(DEE_Items.WOODEN_SPEAR)
@@ -32,29 +32,38 @@ public class DEE_ItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(DEE_Items.DIAMOND_SPEAR)
                 .add(DEE_Items.NETHERITE_SPEAR);
 
-        getOrCreateTagBuilder(DEE_Tags.Items.SHOOT_ENCHANTABLE)
+        valueLookupBuilder(DEE_Tags.Items.SHOOT_ENCHANTABLE)
                 .addTag(DEE_Tags.Items.ARROW_SHOOT_ENCHANTABLE)
                 .addTag(DEE_Tags.Items.SPEAR_WEAPONS);
 
-        getOrCreateTagBuilder(ItemTags.VANISHING_ENCHANTABLE)
+        valueLookupBuilder(ItemTags.VANISHING_ENCHANTABLE)
                 .addTag(DEE_Tags.Items.SPEAR_WEAPONS);
 
-        getOrCreateTagBuilder(DEE_Tags.Items.REPAIR_JATTATIUM)
-                .add(Items.OMINOUS_BOTTLE);
+        valueLookupBuilder(DEE_Tags.Items.REPAIR_JATTATIUM)
+                .add(Items.OMINOUS_BOTTLE)
+                .add(Items.EXPERIENCE_BOTTLE);
 
-        getOrCreateTagBuilder(ItemTags.SWORDS)
-                .add(DEE_Items.JETTATIUM_SWORD);
+        valueLookupBuilder(DEE_Tags.Items.REPAIR_COPPER)
+                .add(Items.COPPER_INGOT);
 
-        getOrCreateTagBuilder(ItemTags.PICKAXES)
-                .add(DEE_Items.JETTATIUM_PICKAXE);
+        valueLookupBuilder(ItemTags.SWORDS)
+                .add(DEE_Items.JETTATIUM_SWORD)
+                .add(DEE_Items.COPPER_SWORD);
 
-        getOrCreateTagBuilder(ItemTags.AXES)
-                .add(DEE_Items.JETTATIUM_AXE);
+        valueLookupBuilder(ItemTags.PICKAXES)
+                .add(DEE_Items.JETTATIUM_PICKAXE)
+                .add(DEE_Items.COPPER_PICKAXE);
 
-        getOrCreateTagBuilder(ItemTags.SHOVELS)
-                .add(DEE_Items.JETTATIUM_SHOVEL);
+        valueLookupBuilder(ItemTags.AXES)
+                .add(DEE_Items.JETTATIUM_AXE)
+                .add(DEE_Items.COPPER_AXE);
 
-        getOrCreateTagBuilder(ItemTags.HOES)
-                .add(DEE_Items.JETTATIUM_HOE);
+        valueLookupBuilder(ItemTags.SHOVELS)
+                .add(DEE_Items.JETTATIUM_SHOVEL)
+                .add(DEE_Items.COPPER_SHOVEL);
+
+        valueLookupBuilder(ItemTags.HOES)
+                .add(DEE_Items.JETTATIUM_HOE)
+                .add(DEE_Items.COPPER_HOE);
     }
 }

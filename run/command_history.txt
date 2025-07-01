@@ -37,3 +37,12 @@
 /tp @s 0 0 0 0 0
 /kill @e[type=!minecraft:player]
 /tp @s 0 0 0 0 0
+/give @s double_edged_enchantments:copper_axe 1
+/tp @s 0 0 0 0 0
+/summon double_edged_enchantments:jettarium_spear_entity 0 0 0
+/summon husk 0 -55 0
+/summon husk ~ ~ ~ {CanPickUpLoot:1b}
+/enchant @s double_edged_enchantments:curse_ashes 2
+/enchant @s minecraft:fire_aspect 2
+/kill @e[type=!minecraft:player]
+/advancement grant @s everything

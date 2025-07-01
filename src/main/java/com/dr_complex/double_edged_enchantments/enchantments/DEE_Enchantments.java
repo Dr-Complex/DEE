@@ -43,7 +43,6 @@ public class DEE_Enchantments {
     public static final RegistryKey<Enchantment> ENCHANTMENT_CRITICALITY = RegistryKey.of(RegistryKeys.ENCHANTMENT, DEE_Common.id("enchantment_criticality"));
     public static final RegistryKey<Enchantment> ENCHANTMENT_MOON = RegistryKey.of(RegistryKeys.ENCHANTMENT, DEE_Common.id("enchantment_moon"));
     public static final RegistryKey<Enchantment> ENCHANTMENT_RETURN = RegistryKey.of(RegistryKeys.ENCHANTMENT, DEE_Common.id("enchantment_return"));
-    public static final RegistryKey<Enchantment> ENCHANTMENT_REVEALING = RegistryKey.of(RegistryKeys.ENCHANTMENT, DEE_Common.id("enchantment_revealing"));
     public static final RegistryKey<Enchantment> ENCHANTMENT_ACCURATE = RegistryKey.of(RegistryKeys.ENCHANTMENT, DEE_Common.id("enchantment_accurate"));
     public static final RegistryKey<Enchantment> ENCHANTMENT_AERODYNAMIC = RegistryKey.of(RegistryKeys.ENCHANTMENT, DEE_Common.id("enchantment_aerodynamic"));
     public static final RegistryKey<Enchantment> ENCHANTMENT_ABSORBING = RegistryKey.of(RegistryKeys.ENCHANTMENT, DEE_Common.id("enchantment_absorbing"));
@@ -68,7 +67,6 @@ public class DEE_Enchantments {
     public static final RegistryKey<Enchantment> CURSE_DROWNING = RegistryKey.of(RegistryKeys.ENCHANTMENT, DEE_Common.id("curse_drowning"));
     public static final RegistryKey<Enchantment> CURSE_ASHES = RegistryKey.of(RegistryKeys.ENCHANTMENT, DEE_Common.id("curse_ashes"));
     public static final RegistryKey<Enchantment> CURSE_NECROPHOBIA = RegistryKey.of(RegistryKeys.ENCHANTMENT, DEE_Common.id("curse_necrophobia"));
-    public static final RegistryKey<Enchantment> CURSE_HIDDEN = RegistryKey.of(RegistryKeys.ENCHANTMENT, DEE_Common.id("curse_hidden"));
     public static final RegistryKey<Enchantment> CURSE_SMOKE = RegistryKey.of(RegistryKeys.ENCHANTMENT, DEE_Common.id("curse_smoke"));
     public static final RegistryKey<Enchantment> CURSE_FLAMMABLE = RegistryKey.of(RegistryKeys.ENCHANTMENT, DEE_Common.id("curse_flammable"));
     public static final RegistryKey<Enchantment> CURSE_TIDES = RegistryKey.of(RegistryKeys.ENCHANTMENT, DEE_Common.id("curse_tides"));
@@ -95,7 +93,6 @@ public class DEE_Enchantments {
     public static final RegistryKey<Enchantment> NM_SHRUNKEN = RegistryKey.of(RegistryKeys.ENCHANTMENT, DEE_Common.id("neutral_magic_shrunken"));
 
     public static void bootstrap(@NotNull Registerable<Enchantment> registerable){
-        var enchantmentLookup = registerable.getRegistryLookup(RegistryKeys.ENCHANTMENT);
         var itemsLookup = registerable.getRegistryLookup(RegistryKeys.ITEM);
         var entryLookup = registerable.getRegistryLookup(RegistryKeys.ENTITY_TYPE);
         var entityTypeLookup = registerable.getRegistryLookup(RegistryKeys.ENTITY_TYPE);
@@ -103,9 +100,9 @@ public class DEE_Enchantments {
         register(registerable,ENCHANTMENT_LUCKY,Enchantment.builder(Enchantment.definition(
                 itemsLookup.getOrThrow(ItemTags.EQUIPPABLE_ENCHANTABLE),
                 itemsLookup.getOrThrow(ItemTags.FOOT_ARMOR_ENCHANTABLE),
-                        1,10,
-                        Enchantment.leveledCost(5,2),
-                        Enchantment.leveledCost(10,2),2, AttributeModifierSlot.ARMOR
+                1,10,
+                Enchantment.leveledCost(5,2),
+                Enchantment.leveledCost(10,2),2, AttributeModifierSlot.ARMOR
         )).addEffect(EnchantmentEffectComponentTypes.ATTRIBUTES,new AttributeEnchantmentEffect(
                 DEE_Common.id("enchantment_lucky"),EntityAttributes.LUCK,
                 EnchantmentLevelBasedValue.linear(1,0.5f), EntityAttributeModifier.Operation.ADD_VALUE))
@@ -114,9 +111,9 @@ public class DEE_Enchantments {
         register(registerable, ENCHANTMENT_CRITICALITY,Enchantment.builder(Enchantment.definition(
                 itemsLookup.getOrThrow(ItemTags.SHARP_WEAPON_ENCHANTABLE),
                 itemsLookup.getOrThrow(ItemTags.SWORD_ENCHANTABLE),
-                        1,10,
-                        Enchantment.leveledCost(5,2),
-                        Enchantment.leveledCost(10,2),2,AttributeModifierSlot.MAINHAND
+                1,10,
+                Enchantment.leveledCost(5,2),
+                Enchantment.leveledCost(10,2),2,AttributeModifierSlot.MAINHAND
         )).addEffect(EnchantmentEffectComponentTypes.DAMAGE,new AddEnchantmentEffect(EnchantmentLevelBasedValue.constant(8.5f)),
                 RandomChanceLootCondition.builder(EnchantmentLevelLootNumberProvider.create(EnchantmentLevelBasedValue.linear(0.1f,0.09f))))
         );
@@ -124,9 +121,9 @@ public class DEE_Enchantments {
         register(registerable, CURSE_UNLUCKY,Enchantment.builder(Enchantment.definition(
                 itemsLookup.getOrThrow(ItemTags.EQUIPPABLE_ENCHANTABLE),
                 itemsLookup.getOrThrow(ItemTags.FOOT_ARMOR_ENCHANTABLE),
-                        1,10,
-                        Enchantment.leveledCost(5,2),
-                        Enchantment.leveledCost(10,2),2, AttributeModifierSlot.ARMOR
+                1,10,
+                Enchantment.leveledCost(5,2),
+                Enchantment.leveledCost(10,2),2, AttributeModifierSlot.ARMOR
         )).addEffect(EnchantmentEffectComponentTypes.ATTRIBUTES,new AttributeEnchantmentEffect(
                 DEE_Common.id("curse_unlucky"),EntityAttributes.LUCK,
                 EnchantmentLevelBasedValue.linear(-0.125f,-0.625f), EntityAttributeModifier.Operation.ADD_VALUE))
@@ -135,35 +132,31 @@ public class DEE_Enchantments {
         register(registerable, CURSE_CRUELNESS,Enchantment.builder(Enchantment.definition(
                 itemsLookup.getOrThrow(ItemTags.SHARP_WEAPON_ENCHANTABLE),
                 itemsLookup.getOrThrow(ItemTags.SWORD_ENCHANTABLE),
-                        1,10,
-                        Enchantment.leveledCost(5,2),
-                        Enchantment.leveledCost(10,2),2,AttributeModifierSlot.MAINHAND
+                1,10,
+                Enchantment.leveledCost(5,2),
+                Enchantment.leveledCost(10,2),2,AttributeModifierSlot.MAINHAND
         )).addEffect(EnchantmentEffectComponentTypes.DAMAGE,
-                        new AddEnchantmentEffect(EnchantmentLevelBasedValue.constant(-9.5f)),
-                        RandomChanceLootCondition.builder(EnchantmentLevelLootNumberProvider.create(
-                                EnchantmentLevelBasedValue.linear(0.144f,0.095f))
-                        )
-                )
+                new AddEnchantmentEffect(EnchantmentLevelBasedValue.constant(-9.5f)),
+                RandomChanceLootCondition.builder(EnchantmentLevelLootNumberProvider.create(
+                EnchantmentLevelBasedValue.linear(0.144f,0.095f))))
         );
 
         register(registerable,CURSE_ENTOMOPHOBIA,Enchantment.builder(Enchantment.definition(
                 itemsLookup.getOrThrow(ItemTags.SHARP_WEAPON_ENCHANTABLE),
                 itemsLookup.getOrThrow(ItemTags.SWORD_ENCHANTABLE),
-                                1,10,
-                                Enchantment.leveledCost(5,2),
-                                Enchantment.leveledCost(10,2),2,AttributeModifierSlot.MAINHAND
+                1,10,
+                Enchantment.leveledCost(5,2),
+                Enchantment.leveledCost(10,2),2,AttributeModifierSlot.MAINHAND
         )).addEffect(EnchantmentEffectComponentTypes.DAMAGE,
-                        new AddEnchantmentEffect(EnchantmentLevelBasedValue.linear(-0.625f)),
-                        EntityPropertiesLootCondition.builder(LootContext.EntityTarget.THIS,EntityPredicate.Builder.create().type(EntityTypePredicate.create(entryLookup, EntityTypeTags.ARTHROPOD))))
-                .addEffect(EnchantmentEffectComponentTypes.POST_ATTACK,EnchantmentEffectTarget.ATTACKER,EnchantmentEffectTarget.VICTIM,
-                        new ApplyMobEffectEnchantmentEffect(
-                                RegistryEntryList.of(StatusEffects.INFESTED),
-                                EnchantmentLevelBasedValue.linear(10f,10f),
-                                EnchantmentLevelBasedValue.linear(30f, 15f),
-                                EnchantmentLevelBasedValue.linear(0f,1f),
-                                EnchantmentLevelBasedValue.linear(0f,1f)
-                        )
-                )
+                     new AddEnchantmentEffect(EnchantmentLevelBasedValue.linear(-0.625f)),
+                     EntityPropertiesLootCondition.builder(LootContext.EntityTarget.THIS,EntityPredicate.Builder.create().type(EntityTypePredicate.create(entryLookup, EntityTypeTags.ARTHROPOD)))
+        ).addEffect(EnchantmentEffectComponentTypes.POST_ATTACK,EnchantmentEffectTarget.ATTACKER,EnchantmentEffectTarget.VICTIM,
+                    new ApplyMobEffectEnchantmentEffect(
+                    RegistryEntryList.of(StatusEffects.INFESTED),
+                    EnchantmentLevelBasedValue.linear(10f,10f),
+                    EnchantmentLevelBasedValue.linear(30f, 15f),
+                    EnchantmentLevelBasedValue.linear(0f,1f),
+                    EnchantmentLevelBasedValue.linear(0f,1f)))
         );
         
         register(registerable, CURSE_FUMBLING,Enchantment.builder(Enchantment.definition(
@@ -182,9 +175,9 @@ public class DEE_Enchantments {
 
         register(registerable, CURSE_REBUILDING, Enchantment.builder(Enchantment.definition(
                 itemsLookup.getOrThrow(ItemTags.MACE_ENCHANTABLE),
-                        1,10,
-                        Enchantment.leveledCost(5,2),
-                        Enchantment.leveledCost(10,2),2,AttributeModifierSlot.MAINHAND
+                1,10,
+                Enchantment.leveledCost(5,2),
+                Enchantment.leveledCost(10,2),2,AttributeModifierSlot.MAINHAND
         )).addEffect(EnchantmentEffectComponentTypes.ARMOR_EFFECTIVENESS,
                 new AddEnchantmentEffect(EnchantmentLevelBasedValue.linear(0.0125f,0.2375f)))
         );
@@ -192,40 +185,38 @@ public class DEE_Enchantments {
         register(registerable, CURSE_DULLNESS, Enchantment.builder(Enchantment.definition(
                 itemsLookup.getOrThrow(ItemTags.SHARP_WEAPON_ENCHANTABLE),
                 itemsLookup.getOrThrow(ItemTags.SWORD_ENCHANTABLE),
-                        1,10,
-                        Enchantment.leveledCost(5,2),
-                        Enchantment.leveledCost(10,2),2,AttributeModifierSlot.MAINHAND
+                1,10,
+                Enchantment.leveledCost(5,2),
+                Enchantment.leveledCost(10,2),2,AttributeModifierSlot.MAINHAND
         )).addEffect(EnchantmentEffectComponentTypes.DAMAGE,
                 new AddEnchantmentEffect(EnchantmentLevelBasedValue.linear(-0.75f,-0.85f)))
         );
 
         register(registerable, CURSE_FRAGILE, Enchantment.builder(Enchantment.definition(
                 itemsLookup.getOrThrow(ItemTags.DURABILITY_ENCHANTABLE),
-                                1,10,
-                                Enchantment.leveledCost(5,2),
-                                Enchantment.leveledCost(10,2),2,AttributeModifierSlot.ANY
+                1,10,
+                Enchantment.leveledCost(5,2),
+                Enchantment.leveledCost(10,2),2,AttributeModifierSlot.ANY
         )).addEffect(EnchantmentEffectComponentTypes.ITEM_DAMAGE,
                 new RemoveBinomialEnchantmentEffect(new EnchantmentLevelBasedValue.Fraction(EnchantmentLevelBasedValue.linear(-8.0F),
-                        EnchantmentLevelBasedValue.linear(10.0F, 5.0F))),
-                MatchToolLootCondition.builder(ItemPredicate.Builder.create().tag(itemsLookup, ItemTags.ARMOR_ENCHANTABLE)))
-                .addEffect(EnchantmentEffectComponentTypes.ITEM_DAMAGE,
-                        new RemoveBinomialEnchantmentEffect(new EnchantmentLevelBasedValue.Fraction(EnchantmentLevelBasedValue.linear(-2.0F),
-                                EnchantmentLevelBasedValue.linear(2.0F, 1.0F))),
-                        InvertedLootCondition.builder(MatchToolLootCondition.builder(ItemPredicate.Builder.create().tag(itemsLookup, ItemTags.ARMOR_ENCHANTABLE)))
-                )
+                EnchantmentLevelBasedValue.linear(10.0F, 5.0F))),
+                MatchToolLootCondition.builder(ItemPredicate.Builder.create().tag(itemsLookup, ItemTags.ARMOR_ENCHANTABLE))
+        ).addEffect(EnchantmentEffectComponentTypes.ITEM_DAMAGE,
+                new RemoveBinomialEnchantmentEffect(new EnchantmentLevelBasedValue.Fraction(EnchantmentLevelBasedValue.linear(-2.0F),
+                EnchantmentLevelBasedValue.linear(2.0F, 1.0F))),
+                InvertedLootCondition.builder(MatchToolLootCondition.builder(ItemPredicate.Builder.create().tag(itemsLookup, ItemTags.ARMOR_ENCHANTABLE))))
         );
 
         register(registerable, CURSE_NARROW, Enchantment.builder(Enchantment.definition(
                 itemsLookup.getOrThrow(ItemTags.SWORD_ENCHANTABLE),
-                        1,10,
-                        Enchantment.leveledCost(5,2),
-                        Enchantment.leveledCost(10,2),2,AttributeModifierSlot.MAINHAND
+                1,10,
+                Enchantment.leveledCost(5,2),
+                Enchantment.leveledCost(10,2),2,AttributeModifierSlot.MAINHAND
         )).addEffect(EnchantmentEffectComponentTypes.ATTRIBUTES,
                 new AttributeEnchantmentEffect(DEE_Common.id("curse_narrow"),
-                        EntityAttributes.SWEEPING_DAMAGE_RATIO,
-                        EnchantmentLevelBasedValue.linear(-0.3375f,-0.0625f),
-                        EntityAttributeModifier.Operation.ADD_VALUE)
-                )
+                EntityAttributes.SWEEPING_DAMAGE_RATIO,
+                EnchantmentLevelBasedValue.linear(-0.3375f,-0.0625f),
+                EntityAttributeModifier.Operation.ADD_VALUE))
         );
 
         register(registerable, CURSE_IRON_MAIDEN, Enchantment.builder(Enchantment.definition(
@@ -237,58 +228,57 @@ public class DEE_Enchantments {
         )).addEffect(EnchantmentEffectComponentTypes.POST_ATTACK,
                 EnchantmentEffectTarget.VICTIM,EnchantmentEffectTarget.VICTIM,
                 new CursedDamageBacklash(
-                        EnchantmentLevelBasedValue.linear(0.5f,0.25f),
-                        EnchantmentLevelBasedValue.linear(0.75f,0.375f),
-                        0.75f
-                )
+                EnchantmentLevelBasedValue.linear(0.5f,0.25f),
+                EnchantmentLevelBasedValue.linear(0.75f,0.375f),
+                0.75f)
         ).addEffect(EnchantmentEffectComponentTypes.POST_ATTACK,
                 EnchantmentEffectTarget.VICTIM,EnchantmentEffectTarget.VICTIM,
                 new CursedDamageBacklash(
-                        EnchantmentLevelBasedValue.linear(1000f,100f),
-                        EnchantmentLevelBasedValue.linear(1000f,350f),
-                        0.0001f
-                )));
+                EnchantmentLevelBasedValue.linear(1000f,100f),
+                EnchantmentLevelBasedValue.linear(1000f,350f),
+                0.0001f))
+        );
 
         register(registerable, CURSE_LOSS, Enchantment.builder(Enchantment.definition(
                 itemsLookup.getOrThrow(ItemTags.MINING_LOOT_ENCHANTABLE),
-                        1,10,
-                        Enchantment.leveledCost(5,2),
-                        Enchantment.leveledCost(10,2),2,AttributeModifierSlot.MAINHAND
+                1,10,
+                Enchantment.leveledCost(5,2),
+                Enchantment.leveledCost(10,2),2,AttributeModifierSlot.MAINHAND
         )).addEffect(EnchantmentEffectComponentTypes.BLOCK_EXPERIENCE,
                 new SetEnchantmentEffect(EnchantmentLevelBasedValue.constant(0.0f)))
         );
 
         register(registerable,CURSE_UNENDING,Enchantment.builder(Enchantment.definition(
                 itemsLookup.getOrThrow(ItemTags.CROSSBOW_ENCHANTABLE),
-                        1,10,
-                        Enchantment.leveledCost(5,2),
-                        Enchantment.leveledCost(10,2),2,AttributeModifierSlot.HAND
+                1,10,
+                Enchantment.leveledCost(5,2),
+                Enchantment.leveledCost(10,2),2,AttributeModifierSlot.HAND
         )).addNonListEffect(EnchantmentEffectComponentTypes.CROSSBOW_CHARGE_TIME,
              new AddEnchantmentEffect(EnchantmentLevelBasedValue.linear(0.325f,0.625f)))
         );
 
         register(registerable,CURSE_IMPALED,Enchantment.builder(Enchantment.definition(
                 itemsLookup.getOrThrow(ItemTags.ARMOR_ENCHANTABLE),
-                        1,10,
-                        Enchantment.leveledCost(5,2),
-                        Enchantment.leveledCost(10,2),2,AttributeModifierSlot.ARMOR
+                1,10,
+                Enchantment.leveledCost(5,2),
+                Enchantment.leveledCost(10,2),2,AttributeModifierSlot.ARMOR
         )).addEffect(EnchantmentEffectComponentTypes.POST_ATTACK,EnchantmentEffectTarget.VICTIM,EnchantmentEffectTarget.VICTIM,
                 new CursedDamageBacklash(
-                        EnchantmentLevelBasedValue.linear(0.25f,0.125f),
-                        EnchantmentLevelBasedValue.linear(0.75f,0.375f),
-                        0.85f
+                EnchantmentLevelBasedValue.linear(0.25f,0.125f),
+                EnchantmentLevelBasedValue.linear(0.75f,0.375f),
+                0.85f
                 ),
                 DamageSourcePropertiesLootCondition.builder(
-                        DamageSourcePredicate.Builder.create()
-                                .tag(TagPredicate.expected(DamageTypeTags.IS_PROJECTILE))
-                                .tag(TagPredicate.unexpected(DamageTypeTags.BYPASSES_INVULNERABILITY))))
+                DamageSourcePredicate.Builder.create()
+                .tag(TagPredicate.expected(DamageTypeTags.IS_PROJECTILE))
+                .tag(TagPredicate.unexpected(DamageTypeTags.BYPASSES_INVULNERABILITY))))
         );
 
         register(registerable, CURSE_THALASSOPHOBIA, Enchantment.builder(Enchantment.definition(
                 itemsLookup.getOrThrow(ItemTags.HEAD_ARMOR_ENCHANTABLE),
-                        1,10,
-                        Enchantment.leveledCost(5,2),
-                        Enchantment.leveledCost(10,2),2, AttributeModifierSlot.ARMOR
+                1,10,
+                Enchantment.leveledCost(5,2),
+                Enchantment.leveledCost(10,2),2, AttributeModifierSlot.ARMOR
         )).addEffect(EnchantmentEffectComponentTypes.ATTRIBUTES,new AttributeEnchantmentEffect(DEE_Common.id("curse_thalassophobia"),
                 EntityAttributes.SUBMERGED_MINING_SPEED,
                 EnchantmentLevelBasedValue.linear(-1.35f,-2.1f),
@@ -297,9 +287,9 @@ public class DEE_Enchantments {
 
         register(registerable,ENCHANTMENT_MOON, Enchantment.builder(Enchantment.definition(
                 itemsLookup.getOrThrow(ItemTags.FOOT_ARMOR_ENCHANTABLE),
-                        1,10,
-                        Enchantment.leveledCost(5,2),
-                        Enchantment.leveledCost(10,2),2,AttributeModifierSlot.FEET
+                1,10,
+                Enchantment.leveledCost(5,2),
+                Enchantment.leveledCost(10,2),2,AttributeModifierSlot.FEET
         )).addEffect(EnchantmentEffectComponentTypes.ATTRIBUTES,new AttributeEnchantmentEffect(DEE_Common.id("enchantment_moon"),
                 EntityAttributes.GRAVITY,EnchantmentLevelBasedValue.linear(-0.015f,-0.005f),
                 EntityAttributeModifier.Operation.ADD_VALUE))
@@ -307,9 +297,9 @@ public class DEE_Enchantments {
 
         register(registerable,CURSE_JUPITER, Enchantment.builder(Enchantment.definition(
                 itemsLookup.getOrThrow(ItemTags.FOOT_ARMOR_ENCHANTABLE),
-                        1,10,
-                        Enchantment.leveledCost(5,2),
-                        Enchantment.leveledCost(10,2),2,AttributeModifierSlot.FEET
+                1,10,
+                Enchantment.leveledCost(5,2),
+                Enchantment.leveledCost(10,2),2,AttributeModifierSlot.FEET
         )).addEffect(EnchantmentEffectComponentTypes.ATTRIBUTES,new AttributeEnchantmentEffect(DEE_Common.id("curse_jupiter"),
                 EntityAttributes.GRAVITY,EnchantmentLevelBasedValue.linear(0.0125f,0.0075f),
                 EntityAttributeModifier.Operation.ADD_VALUE))
@@ -317,9 +307,9 @@ public class DEE_Enchantments {
 
         register(registerable, ENCHANTMENT_RETURN,Enchantment.builder(Enchantment.definition(
                 itemsLookup.getOrThrow(ItemTags.VANISHING_ENCHANTABLE),
-                                1,1,
-                                Enchantment.leveledCost(5,2),
-                                Enchantment.leveledCost(10,2),2,AttributeModifierSlot.ANY
+                1,1,
+                Enchantment.leveledCost(5,2),
+                Enchantment.leveledCost(10,2),2,AttributeModifierSlot.ANY
         )).addEffect(EnchantmentEffectComponentTypes.TICK,
                 new Enchantment_Return())
                 .addEffect(EnchantmentEffectComponentTypes.PREVENT_EQUIPMENT_DROP)
@@ -327,9 +317,9 @@ public class DEE_Enchantments {
 
         register(registerable, CURSE_SOULLESS, Enchantment.builder(Enchantment.definition(
                 itemsLookup.getOrThrow(ItemTags.FOOT_ARMOR_ENCHANTABLE),
-                        1,10,
-                        Enchantment.leveledCost(5,2),
-                        Enchantment.leveledCost(10,2),2,AttributeModifierSlot.FEET
+                1,10,
+                Enchantment.leveledCost(5,2),
+                Enchantment.leveledCost(10,2),2,AttributeModifierSlot.FEET
         )).addEffect(EnchantmentEffectComponentTypes.TICK,new ApplyMobEffectEnchantmentEffect(
                 RegistryEntryList.of(StatusEffects.SLOWNESS),
                 EnchantmentLevelBasedValue.linear(0.75f,0.5f),
@@ -348,9 +338,9 @@ public class DEE_Enchantments {
 
         register(registerable, CURSE_DROWNING, Enchantment.builder(Enchantment.definition(
                 itemsLookup.getOrThrow(ItemTags.HEAD_ARMOR_ENCHANTABLE),
-                        1,10,
-                        Enchantment.leveledCost(5,2),
-                        Enchantment.leveledCost(10,2),2,AttributeModifierSlot.HEAD
+                1,10,
+                Enchantment.leveledCost(5,2),
+                Enchantment.leveledCost(10,2),2,AttributeModifierSlot.HEAD
         )).addEffect(EnchantmentEffectComponentTypes.ATTRIBUTES, new AttributeEnchantmentEffect(
                 DEE_Common.id("curse_drowning"),
                 EntityAttributes.OXYGEN_BONUS,
@@ -360,58 +350,71 @@ public class DEE_Enchantments {
 
         register(registerable, CURSE_ASHES, Enchantment.builder(Enchantment.definition(
                 itemsLookup.getOrThrow(ItemTags.SWORD_ENCHANTABLE),
-                        1,10,
-                        Enchantment.leveledCost(5,2),
-                        Enchantment.leveledCost(10,2),2,AttributeModifierSlot.MAINHAND
+                1,10,
+                Enchantment.leveledCost(5,2),
+                Enchantment.leveledCost(10,2),2,AttributeModifierSlot.MAINHAND
         )).addEffect(EnchantmentEffectComponentTypes.POST_ATTACK,
                 EnchantmentEffectTarget.ATTACKER,EnchantmentEffectTarget.ATTACKER,
-                        new ApplyMobEffectEnchantmentEffect(
-                                RegistryEntryList.of(StatusEffects.BLINDNESS),
-                                EnchantmentLevelBasedValue.linear(1,0.5f),
-                                EnchantmentLevelBasedValue.linear(2,0.75f),
-                                EnchantmentLevelBasedValue.constant(0),
-                                EnchantmentLevelBasedValue.constant(0)
-                        )
-                )
+                new ApplyMobEffectEnchantmentEffect(
+                RegistryEntryList.of(StatusEffects.BLINDNESS),
+                EnchantmentLevelBasedValue.linear(1,0.5f),
+                EnchantmentLevelBasedValue.linear(2,0.75f),
+                EnchantmentLevelBasedValue.constant(0),
+                EnchantmentLevelBasedValue.constant(0)))
         );
 
         register(registerable, CURSE_NECROPHOBIA, Enchantment.builder(Enchantment.definition(
                 itemsLookup.getOrThrow(ItemTags.WEAPON_ENCHANTABLE),
-                                1,10,
-                                Enchantment.leveledCost(5,2),
-                                Enchantment.leveledCost(10,2),2,AttributeModifierSlot.MAINHAND
+                1,10,
+                Enchantment.leveledCost(5,2),
+                Enchantment.leveledCost(10,2),2,AttributeModifierSlot.MAINHAND
         )).addEffect(EnchantmentEffectComponentTypes.DAMAGE,
                         new AddEnchantmentEffect(EnchantmentLevelBasedValue.linear(-1.75f,-1.25f)),
-                        EntityPropertiesLootCondition.builder(LootContext.EntityTarget.THIS,EntityPredicate.Builder.create().type(EntityTypePredicate.create(entryLookup, EntityTypeTags.UNDEAD))))
-                .addEffect(EnchantmentEffectComponentTypes.POST_ATTACK,EnchantmentEffectTarget.ATTACKER,EnchantmentEffectTarget.VICTIM,
-                        new ApplyMobEffectEnchantmentEffect(
-                                RegistryEntryList.of(StatusEffects.SPEED),
-                                EnchantmentLevelBasedValue.linear(0.5f, 0.75f),
-                                EnchantmentLevelBasedValue.linear(0.5f, 1.25f),
-                                EnchantmentLevelBasedValue.constant(0.0F),
-                                EnchantmentLevelBasedValue.constant(1.0F)),
                         EntityPropertiesLootCondition.builder(LootContext.EntityTarget.THIS,EntityPredicate.Builder.create().type(EntityTypePredicate.create(entryLookup, EntityTypeTags.UNDEAD)))
-                )
+        ).addEffect(EnchantmentEffectComponentTypes.POST_ATTACK,EnchantmentEffectTarget.ATTACKER,EnchantmentEffectTarget.VICTIM,
+                        new ApplyMobEffectEnchantmentEffect(
+                        RegistryEntryList.of(StatusEffects.SPEED),
+                        EnchantmentLevelBasedValue.linear(0.5f, 0.75f),
+                        EnchantmentLevelBasedValue.linear(0.5f, 1.25f),
+                        EnchantmentLevelBasedValue.constant(0.0F),
+                        EnchantmentLevelBasedValue.constant(1.0F)),
+                        EntityPropertiesLootCondition.builder(LootContext.EntityTarget.THIS,EntityPredicate.Builder.create().type(EntityTypePredicate.create(entryLookup, EntityTypeTags.UNDEAD))))
         );
 
         register(registerable,NM_GROWTH,Enchantment.builder(Enchantment.definition(
-                itemsLookup.getOrThrow(ItemTags.ARMOR_ENCHANTABLE),
-                        1,1,
-                        Enchantment.leveledCost(5,2),
-                        Enchantment.leveledCost(10,2),2,AttributeModifierSlot.ARMOR
-        )).addEffect(EnchantmentEffectComponentTypes.ATTRIBUTES,new AttributeEnchantmentEffect(
+                itemsLookup.getOrThrow(ItemTags.ARMOR_ENCHANTABLE),1,1,
+                Enchantment.leveledCost(5,2), Enchantment.leveledCost(10,2),2,
+                AttributeModifierSlot.ARMOR)
+        ).addEffect(EnchantmentEffectComponentTypes.ATTRIBUTES,new AttributeEnchantmentEffect(
                 DEE_Common.id("neutral_magic_growth"),EntityAttributes.SCALE,
-                EnchantmentLevelBasedValue.constant(0.15f), EntityAttributeModifier.Operation.ADD_VALUE))
+                EnchantmentLevelBasedValue.linear(0.075f), EntityAttributeModifier.Operation.ADD_VALUE)
+        ).addEffect(EnchantmentEffectComponentTypes.ATTRIBUTES,new AttributeEnchantmentEffect(
+                DEE_Common.id("neutral_magic_growth"),EntityAttributes.STEP_HEIGHT,
+                EnchantmentLevelBasedValue.linear(0.05f),EntityAttributeModifier.Operation.ADD_VALUE)
+        ).addEffect(EnchantmentEffectComponentTypes.ATTRIBUTES,new AttributeEnchantmentEffect(
+                DEE_Common.id("neutral_magic_growth"),EntityAttributes.BLOCK_INTERACTION_RANGE,
+                EnchantmentLevelBasedValue.linear(0.025f),EntityAttributeModifier.Operation.ADD_VALUE)
+        ).addEffect(EnchantmentEffectComponentTypes.ATTRIBUTES,new AttributeEnchantmentEffect(
+                DEE_Common.id("neutral_magic_growth"),EntityAttributes.ENTITY_INTERACTION_RANGE,
+                EnchantmentLevelBasedValue.linear(0.025f),EntityAttributeModifier.Operation.ADD_VALUE))
         );
 
         register(registerable,NM_SHRUNKEN,Enchantment.builder(Enchantment.definition(
-                itemsLookup.getOrThrow(ItemTags.ARMOR_ENCHANTABLE),
-                        1,1,
-                        Enchantment.leveledCost(5,2),
-                        Enchantment.leveledCost(10,2),2,AttributeModifierSlot.ARMOR
-        )).addEffect(EnchantmentEffectComponentTypes.ATTRIBUTES,new AttributeEnchantmentEffect(
+                itemsLookup.getOrThrow(ItemTags.ARMOR_ENCHANTABLE),1,1,
+                Enchantment.leveledCost(5,2), Enchantment.leveledCost(10,2),2,
+                AttributeModifierSlot.ARMOR)
+        ).addEffect(EnchantmentEffectComponentTypes.ATTRIBUTES,new AttributeEnchantmentEffect(
                 DEE_Common.id("neutral_magic_shrunken"),EntityAttributes.SCALE,
-                EnchantmentLevelBasedValue.constant(-0.15f), EntityAttributeModifier.Operation.ADD_VALUE))
+                EnchantmentLevelBasedValue.linear(-0.075f), EntityAttributeModifier.Operation.ADD_VALUE)
+        ).addEffect(EnchantmentEffectComponentTypes.ATTRIBUTES,new AttributeEnchantmentEffect(
+                DEE_Common.id("neutral_magic_shrunken"),EntityAttributes.STEP_HEIGHT,
+                EnchantmentLevelBasedValue.linear(-0.05f),EntityAttributeModifier.Operation.ADD_VALUE)
+        ).addEffect(EnchantmentEffectComponentTypes.ATTRIBUTES,new AttributeEnchantmentEffect(
+                DEE_Common.id("neutral_magic_shrunken"),EntityAttributes.BLOCK_INTERACTION_RANGE,
+                EnchantmentLevelBasedValue.linear(-0.025f),EntityAttributeModifier.Operation.ADD_VALUE)
+        ).addEffect(EnchantmentEffectComponentTypes.ATTRIBUTES,new AttributeEnchantmentEffect(
+                DEE_Common.id("neutral_magic_shrunken"),EntityAttributes.ENTITY_INTERACTION_RANGE,
+                EnchantmentLevelBasedValue.linear(-0.025f),EntityAttributeModifier.Operation.ADD_VALUE))
         );
 
         register(registerable,CURSE_SMOKE, Enchantment.builder(Enchantment.definition(
@@ -442,9 +445,9 @@ public class DEE_Enchantments {
         register(registerable,CURSE_HOOK,Enchantment.builder(Enchantment.definition(
                 itemsLookup.getOrThrow(DEE_Tags.Items.ARROW_SHOOT_ENCHANTABLE),
                 itemsLookup.getOrThrow(ItemTags.BOW_ENCHANTABLE),
-                        1,10,
-                        Enchantment.leveledCost(5,2),
-                        Enchantment.leveledCost(10,2),2,AttributeModifierSlot.MAINHAND
+                1,10,
+                Enchantment.leveledCost(5,2),
+                Enchantment.leveledCost(10,2),2,AttributeModifierSlot.MAINHAND
         )).addEffect(EnchantmentEffectComponentTypes.KNOCKBACK,
                 new AddEnchantmentEffect(EnchantmentLevelBasedValue.linear(-0.05f,-0.125f)))
         );
@@ -452,9 +455,9 @@ public class DEE_Enchantments {
         register(registerable,CURSE_VACUUM,Enchantment.builder(Enchantment.definition(
                 itemsLookup.getOrThrow(ItemTags.SHARP_WEAPON_ENCHANTABLE),
                 itemsLookup.getOrThrow(ItemTags.SWORD_ENCHANTABLE),
-                        1,10,
-                        Enchantment.leveledCost(5,2),
-                        Enchantment.leveledCost(10,2),2,AttributeModifierSlot.MAINHAND
+                1,10,
+                Enchantment.leveledCost(5,2),
+                Enchantment.leveledCost(10,2),2,AttributeModifierSlot.MAINHAND
         )).addEffect(EnchantmentEffectComponentTypes.KNOCKBACK,
                 new AddEnchantmentEffect(EnchantmentLevelBasedValue.linear(-0.05f,-0.125f)))
         );
@@ -474,9 +477,9 @@ public class DEE_Enchantments {
 
         register(registerable,CURSE_SOFTNESS,Enchantment.builder(Enchantment.definition(
                 itemsLookup.getOrThrow(DEE_Tags.Items.ARROW_SHOOT_ENCHANTABLE),
-                        1,10,
-                        Enchantment.leveledCost(5,2),
-                        Enchantment.leveledCost(10,2),2, AttributeModifierSlot.MAINHAND
+                1,10,
+                Enchantment.leveledCost(5,2),
+                Enchantment.leveledCost(10,2),2, AttributeModifierSlot.MAINHAND
         )).addEffect(EnchantmentEffectComponentTypes.DAMAGE,
                 new AddEnchantmentEffect(EnchantmentLevelBasedValue.linear(-0.05f,-0.55f)),
                 EntityPropertiesLootCondition.builder(
@@ -529,14 +532,16 @@ public class DEE_Enchantments {
                 1,10,
                 Enchantment.leveledCost(5,2),
                 Enchantment.leveledCost(10,2),2,AttributeModifierSlot.MAINHAND
-        )).addEffect(EnchantmentEffectComponentTypes.PROJECTILE_SPREAD,new AddEnchantmentEffect(EnchantmentLevelBasedValue.linear(-3.75f,-4.25f))));
+        )).addEffect(EnchantmentEffectComponentTypes.PROJECTILE_SPREAD,new AddEnchantmentEffect(
+                EnchantmentLevelBasedValue.linear(-3.75f,-4.25f))));
 
         register(registerable,CURSE_SPREAD,Enchantment.builder(Enchantment.definition(
                 itemsLookup.getOrThrow(DEE_Tags.Items.SHOOT_ENCHANTABLE),
                 1,10,
                 Enchantment.leveledCost(5,2),
                 Enchantment.leveledCost(10,2),2,AttributeModifierSlot.MAINHAND
-        )).addEffect(EnchantmentEffectComponentTypes.PROJECTILE_SPREAD,new AddEnchantmentEffect(EnchantmentLevelBasedValue.linear(2.5f,1.5f))));
+        )).addEffect(EnchantmentEffectComponentTypes.PROJECTILE_SPREAD,new AddEnchantmentEffect(
+                EnchantmentLevelBasedValue.linear(2.5f,1.5f))));
 
 
         register(registerable,ENCHANTMENT_AERODYNAMIC,Enchantment.builder(Enchantment.definition(
@@ -558,14 +563,16 @@ public class DEE_Enchantments {
                 1,10,
                 Enchantment.leveledCost(5,2),
                 Enchantment.leveledCost(10,2),2,AttributeModifierSlot.MAINHAND
-        )).addEffect(EnchantmentEffectComponentTypes.SMASH_DAMAGE_PER_FALLEN_BLOCK,new AddEnchantmentEffect(EnchantmentLevelBasedValue.linear(-0.2f,-0.67f))));
+        )).addEffect(EnchantmentEffectComponentTypes.SMASH_DAMAGE_PER_FALLEN_BLOCK,new AddEnchantmentEffect(
+                EnchantmentLevelBasedValue.linear(-0.2f,-0.67f))));
 
         register(registerable,CURSE_REDIRECT,Enchantment.builder(Enchantment.definition(
                 itemsLookup.getOrThrow(ItemTags.CROSSBOW_ENCHANTABLE),
                 1,10,
                 Enchantment.leveledCost(5,2),
                 Enchantment.leveledCost(10,2),2,AttributeModifierSlot.MAINHAND
-        )).addEffect(EnchantmentEffectComponentTypes.PROJECTILE_PIERCING,new AddEnchantmentEffect(EnchantmentLevelBasedValue.constant(1f))));
+        )).addEffect(EnchantmentEffectComponentTypes.PROJECTILE_PIERCING,new AddEnchantmentEffect(
+                EnchantmentLevelBasedValue.linear(1f))));
 
         register(registerable,CURSE_IMPLOSION,Enchantment.builder(Enchantment.definition(
                 itemsLookup.getOrThrow(ItemTags.ARMOR_ENCHANTABLE),
@@ -578,7 +585,8 @@ public class DEE_Enchantments {
                         EnchantmentLevelBasedValue.linear(1.5f,0.75f),
                         1.0f
                 ),DamageSourcePropertiesLootCondition.builder(
-                        DamageSourcePredicate.Builder.create().tag(TagPredicate.expected(DamageTypeTags.IS_EXPLOSION)).tag(TagPredicate.unexpected(DamageTypeTags.BYPASSES_INVULNERABILITY))
+                        DamageSourcePredicate.Builder.create().tag(TagPredicate.expected(DamageTypeTags.IS_EXPLOSION))
+                                .tag(TagPredicate.unexpected(DamageTypeTags.BYPASSES_INVULNERABILITY))
                 )
         ).addEffect(EnchantmentEffectComponentTypes.ATTRIBUTES,
                 new AttributeEnchantmentEffect(
@@ -601,9 +609,8 @@ public class DEE_Enchantments {
                 1,10,
                 Enchantment.leveledCost(5,2),
                 Enchantment.leveledCost(10,2),2,AttributeModifierSlot.MAINHAND
-        )).addEffect(EnchantmentEffectComponentTypes.POST_ATTACK,EnchantmentEffectTarget.ATTACKER,EnchantmentEffectTarget.VICTIM, new SummonEntityEnchantmentEffect(
-                entityTypeLookup.getOrThrow(EntityTypeTags.AQUATIC),false
-                ),
+        )).addEffect(EnchantmentEffectComponentTypes.POST_ATTACK,EnchantmentEffectTarget.ATTACKER,EnchantmentEffectTarget.VICTIM,
+                new SummonEntityEnchantmentEffect(entityTypeLookup.getOrThrow(EntityTypeTags.AQUATIC),false),
                 new AnyOfLootCondition.Builder(
                         LocationCheckLootCondition.builder(LocationPredicate.Builder.create().fluid(FluidPredicate.Builder.create().fluid(Fluids.WATER))),
                         new AllOfLootCondition.Builder(

@@ -3,7 +3,6 @@ package com.dr_complex.double_edged_enchantments.client;
 import com.dr_complex.double_edged_enchantments.DEE_Common;
 import com.dr_complex.double_edged_enchantments.entity.projectiles.AbstractSpearEntity;
 import com.dr_complex.double_edged_enchantments.utils.SpearType;
-import com.google.common.collect.Maps;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.render.OverlayTexture;
@@ -14,7 +13,6 @@ import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.render.item.ItemRenderer;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.Util;
 import net.minecraft.util.math.RotationAxis;
 import org.jetbrains.annotations.NotNull;
 

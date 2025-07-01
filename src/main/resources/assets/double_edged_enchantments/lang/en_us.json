@@ -3,7 +3,11 @@
   "item_group.double_edged_enchantments.dee_group": "Double Edged enchantments",
 
   "item.double_edged_enchantments.exp_needle": "Exp Needle",
-  "item.double_edged_enchantments.reverted_ender_pearl": "Reverted Ender Pearl",
+  "item.double_edged_enchantments.reverted_ender_pearl": "Echo-Pearl",
+  "item.double_edged_enchantments.raw_jattatium": "Raw Jattatium",
+  "item.double_edged_enchantments.cut_jattatium": "Cut Jattatium",
+  "item.double_edged_enchantments.copper_nugget": "Copper Nugget",
+
   "item.double_edged_enchantments.wooden_spear": "Wooden Spear",
   "item.double_edged_enchantments.stone_spear": "Stone Spear",
   "item.double_edged_enchantments.golden_spear": "Golden Spear",
@@ -11,10 +15,18 @@
   "item.double_edged_enchantments.diamond_spear": "Diamond Spear",
   "item.double_edged_enchantments.netherite_spear": "Netherite Spear",
   "item.double_edged_enchantments.copper_spear": "Copper Spear",
+  "item.double_edged_enchantments.jettatium_spear": "Jettatuim Spear",
+
+  "item.double_edged_enchantments.jettatium_sword": "Jettatuim Spear",
+  "item.double_edged_enchantments.jettatium_axe": "Jettatuim Spear",
+  "item.double_edged_enchantments.jettatium_pickaxe": "Jettatuim Spear",
+  "item.double_edged_enchantments.jettatium_hoe": "Jettatuim Spear",
+  "item.double_edged_enchantments.jettatium_shovel": "Jettatuim Spear",
+
   "item.double_edged_enchantments.exp_needle.tooltip": "%1$s / 256",
   "item.double_edged_enchantments.exp_needle.tooltip.fallback": "none",
   "item.double_edged_enchantments.reverted_ender_pearl.tooltip": "%1$s",
-  "item.double_edged_enchantments.reverted_ender_pearl.tooltip.fallback": "null",
+  "item.double_edged_enchantments.reverted_ender_pearl.tooltip.fallback": "?? ?? ??",
 
   "entity.double_edged_enchantments.wooden_spear_entity": "Wooden Spear",
   "entity.double_edged_enchantments.stone_spear_entity": "Stone Spear",

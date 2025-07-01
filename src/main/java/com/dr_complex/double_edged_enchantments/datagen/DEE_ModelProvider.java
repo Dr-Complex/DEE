@@ -6,7 +6,6 @@ import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricModelProvider;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.minecraft.client.data.*;
 import net.minecraft.client.render.item.model.ItemModel;
-import net.minecraft.client.render.item.property.bool.BooleanProperty;
 import net.minecraft.client.render.item.property.bool.DamagedProperty;
 import org.jetbrains.annotations.NotNull;
 
@@ -28,16 +27,24 @@ public class DEE_ModelProvider extends FabricModelProvider {
 
         ItemModel.Unbaked unbakedFalse = ItemModels.basic(ModelIds.getItemModelId(DEE_Items.EXP_NEEDLE));
         ItemModel.Unbaked unbakedTrue = ItemModels.basic(ModelIds.getItemSubModelId(DEE_Items.EXP_NEEDLE,"_empty"));
-        BooleanProperty Condition = new DamagedProperty();
 
-        itemModelGenerator.registerCondition(DEE_Items.EXP_NEEDLE, Condition, unbakedTrue, unbakedFalse);
+        itemModelGenerator.registerCondition(DEE_Items.EXP_NEEDLE, new DamagedProperty(), unbakedTrue, unbakedFalse);
+
         itemModelGenerator.register(DEE_Items.REVERED_ENDER_PEARL, Models.GENERATED);
         itemModelGenerator.register(DEE_Items.COPPER_NUGGET,Models.GENERATED);
+        itemModelGenerator.register(DEE_Items.RAW_JATTATIUM,Models.GENERATED);
+        itemModelGenerator.register(DEE_Items.CUT_JATTATIUM,Models.GENERATED);
 
         itemModelGenerator.register(DEE_Items.JETTATIUM_SHOVEL,Models.HANDHELD);
         itemModelGenerator.register(DEE_Items.JETTATIUM_HOE,Models.HANDHELD);
         itemModelGenerator.register(DEE_Items.JETTATIUM_SWORD,Models.HANDHELD);
         itemModelGenerator.register(DEE_Items.JETTATIUM_AXE,Models.HANDHELD);
         itemModelGenerator.register(DEE_Items.JETTATIUM_PICKAXE,Models.HANDHELD);
+
+        itemModelGenerator.register(DEE_Items.COPPER_AXE,Models.HANDHELD);
+        itemModelGenerator.register(DEE_Items.COPPER_HOE,Models.HANDHELD);
+        itemModelGenerator.register(DEE_Items.COPPER_PICKAXE,Models.HANDHELD);
+        itemModelGenerator.register(DEE_Items.COPPER_SWORD,Models.HANDHELD);
+        itemModelGenerator.register(DEE_Items.COPPER_SHOVEL,Models.HANDHELD);
     }
 }

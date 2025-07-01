@@ -1,18 +1,17 @@
 package com.dr_complex.double_edged_enchantments.screen;
 
 import com.dr_complex.double_edged_enchantments.DEE_Common;
-import com.mojang.blaze3d.systems.RenderSystem;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.minecraft.client.gl.RenderPipelines;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
-import net.minecraft.client.render.DiffuseLighting;
-import net.minecraft.client.render.RenderLayer;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.Items;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.screen.slot.Slot;
+import net.minecraft.text.StringVisitable;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
@@ -38,25 +37,24 @@ public class HexingTableScreen extends HandledScreen<HexingTableScreenHandler> {
 
     @Override
     protected void drawBackground(@NotNull DrawContext context, float delta, int mouseX, int mouseY) {
-        RenderSystem.setShaderColor(1.0f,1.0f,1.0f,1.0f);
         int x = this.x;
         int y = this.y;
-        context.drawTexture(RenderLayer::getGuiTextured, MainTexture,x,y,0,0,backgroundWidth,backgroundHeight,256,256);
+        context.drawTexture(RenderPipelines.GUI_TEXTURED, MainTexture,x,y,0,0,backgroundWidth,backgroundHeight,256,256);
         Slot LevelerSlot = this.handler.getSlot(1);
         Slot ConductorSlot = this.handler.getSlot(2);
 
         if(!LevelerSlot.hasStack()){
-            if(ticks >= 300){
-                context.drawTexture(RenderLayer::getGuiTextured,UpTexture,x + LevelerSlot.x, y + LevelerSlot.y, 0, 0,16,16,16,16);
+            if(ticks >= 150){
+                context.drawGuiTexture(RenderPipelines.GUI_TEXTURED,UpTexture,x + LevelerSlot.x, y + LevelerSlot.y, 0, 0,16,16,16,16);
             }else {
-                context.drawTexture(RenderLayer::getGuiTextured,DownTexture,x + LevelerSlot.x, y + LevelerSlot.y, 0, 0,16,16,16,16);
+                context.drawGuiTexture(RenderPipelines.GUI_TEXTURED,DownTexture,x + LevelerSlot.x, y + LevelerSlot.y, 0, 0,16,16,16,16);
             }
         }
         if(!ConductorSlot.hasStack()){
-            if(ticks % 300 >= 150){
-                context.drawTexture(RenderLayer::getGuiTextured,EnchantmentTexture,x + ConductorSlot.x, y + ConductorSlot.y, 0, 0,16,16,16,16);
+            if(ticks % 150 >= 75){
+                context.drawGuiTexture(RenderPipelines.GUI_TEXTURED,EnchantmentTexture,x + ConductorSlot.x, y + ConductorSlot.y, 0, 0,16,16,16,16);
             }else {
-                context.drawTexture(RenderLayer::getGuiTextured,CurseTexture,x + ConductorSlot.x, y + ConductorSlot.y, 0, 0,16,16,16,16);
+                context.drawGuiTexture(RenderPipelines.GUI_TEXTURED,CurseTexture,x + ConductorSlot.x, y + ConductorSlot.y, 0, 0,16,16,16,16);
             }
         }
 
@@ -88,14 +86,14 @@ public class HexingTableScreen extends HandledScreen<HexingTableScreenHandler> {
                         highlight = 0x75808080;
                     }
 
-                    context.drawText(this.textRenderer,String.valueOf(q),r,s,highlight,false);
+                    context.drawWrappedText(this.textRenderer, StringVisitable.plain(String.valueOf(q)),r,s,highlight,0x000000,false);
                     if(bl){
                         context.drawTooltip(this.textRenderer,Text.translatable(list.get(q).value().toString()),r,s);
                     }
                 }
             }
-            context.draw();
-            DiffuseLighting.enableGuiDepthLighting();
+
+
             this.ticks = MathHelper.floorMod(ticks + 1,600);
         }
     }
@@ -114,10 +112,6 @@ public class HexingTableScreen extends HandledScreen<HexingTableScreenHandler> {
         titleY -= 3;
     }
 
-    @Override
-    protected void applyBlur() {
-        super.applyBlur();
-    }
 
     @Override
     public boolean mouseClicked(double mouseX, double mouseY, int button) {
