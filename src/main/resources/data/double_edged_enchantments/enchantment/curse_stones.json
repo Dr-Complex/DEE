@@ -1,0 +1,29 @@
+{
+  "anvil_cost": 2,
+  "description": {
+    "translate": "enchantment.double_edged_enchantments.curse_stones"
+  },
+  "effects": {
+    "minecraft:tick": [
+      {
+        "effect": {
+          "type": "double_edged_enchantments:curse_stones"
+        }
+      }
+    ]
+  },
+  "max_cost": {
+    "base": 10,
+    "per_level_above_first": 2
+  },
+  "max_level": 10,
+  "min_cost": {
+    "base": 5,
+    "per_level_above_first": 2
+  },
+  "slots": [
+    "feet"
+  ],
+  "supported_items": "#minecraft:enchantable/foot_armor",
+  "weight": 1
+}
