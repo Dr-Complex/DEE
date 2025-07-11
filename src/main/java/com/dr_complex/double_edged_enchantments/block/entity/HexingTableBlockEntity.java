@@ -31,7 +31,6 @@ import org.jetbrains.annotations.Nullable;
 
 public class HexingTableBlockEntity extends BlockEntity implements ImplementedInventory, ExtendedScreenHandlerFactory<BlockPos> {
     private final DefaultedList<ItemStack> inventory = DefaultedList.ofSize(4,ItemStack.EMPTY);
-    public float Tick360 = 0.0f;
     int fuel;
 
     protected final PropertyDelegate propertyDelegate = new PropertyDelegate() {

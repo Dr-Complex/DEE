@@ -21,7 +21,7 @@ public record StatusEffectAdder(boolean good) implements EnchantmentEntityEffect
 
     @Override
     public void apply(ServerWorld world, int level, EnchantmentEffectContext context, Entity user, Vec3d pos) {
-        float luck = 0;
+        float luck;
         if(user instanceof LivingEntity living && world.random.nextFloat() > 1f/level){
             luck = world.random.nextFloat();
             if(this.good){

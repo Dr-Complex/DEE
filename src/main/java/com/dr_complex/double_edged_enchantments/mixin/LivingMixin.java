@@ -47,12 +47,6 @@ public abstract class LivingMixin extends Entity implements Attackable {
 
     @Shadow public abstract float getMovementSpeed();
 
-    @Shadow protected abstract float getAttackKnockbackAgainst(Entity target, DamageSource damageSource);
-
-    @Shadow public abstract double getAttributeValue(RegistryEntry<EntityAttribute> attribute);
-
-    @Shadow public abstract void onAttacking(Entity target);
-
     @Shadow public abstract ItemStack getActiveItem();
 
     public LivingMixin(EntityType<?> type, World world) {
