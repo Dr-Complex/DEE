@@ -71,17 +71,17 @@ public class DEE_EnchantmentTagProvider extends EnchantmentTagProvider {
                 Enchantments.FORTUNE,
                 DEE_Enchantments.CURSE_MISFORTUNE,
                 Enchantments.LOOTING,
-                //thieving,
+                DEE_Enchantments.CURSE_THIEVING,
                 Enchantments.SILK_TOUCH,
                 DEE_Enchantments.CURSE_LOSS,
                 Enchantments.LUCK_OF_THE_SEA,
-                //Polluted Oceans
+                DEE_Enchantments.CURSE_POLLUTED_OCEANS,
                 Enchantments.EFFICIENCY,
                 DEE_Enchantments.CURSE_FUMBLING,
                 Enchantments.QUICK_CHARGE,
                 DEE_Enchantments.CURSE_UNENDING,
                 Enchantments.LURE,
-                //Guardian Lure
+                DEE_Enchantments.CURSE_GUARDIAN_LURE,
                 Enchantments.RESPIRATION,
                 DEE_Enchantments.CURSE_DROWNING,
                 Enchantments.AQUA_AFFINITY,
@@ -95,14 +95,16 @@ public class DEE_EnchantmentTagProvider extends EnchantmentTagProvider {
                 Enchantments.THORNS,
                 DEE_Enchantments.CURSE_IRON_MAIDEN,
                 Enchantments.LOYALTY,
-                //Deceitfulness
+                DEE_Enchantments.CURSE_DECEITFULNESS,
                 Enchantments.UNBREAKING,
                 DEE_Enchantments.CURSE_FRAGILE,
                 Enchantments.INFINITY,
                 DEE_Enchantments.CURSE_CONSUMPTION,
                 Enchantments.MENDING,
                 DEE_Enchantments.CURSE_WORSEN,
+
                 //all new modded content
+
                 DEE_Enchantments.ENCHANTMENT_LUCKY,
                 DEE_Enchantments.CURSE_UNLUCKY,
                 DEE_Enchantments.ENCHANTMENT_CRITICALITY,
@@ -114,7 +116,15 @@ public class DEE_EnchantmentTagProvider extends EnchantmentTagProvider {
                 DEE_Enchantments.ENCHANTMENT_ACCURATE,
                 DEE_Enchantments.CURSE_SPREAD,
                 DEE_Enchantments.NM_SHRUNKEN,
-                DEE_Enchantments.NM_GROWTH);
+                DEE_Enchantments.NM_GROWTH,
+                DEE_Enchantments.ENCHANTMENT_CLEAVING,
+                DEE_Enchantments.CURSE_BLUNT,
+                DEE_Enchantments.ENCHANTMENT_RANGE,
+                DEE_Enchantments.CURSE_SHORTNESS,
+                DEE_Enchantments.ENCHANTMENT_SPEED,
+                DEE_Enchantments.CURSE_FATIGUE,
+                DEE_Enchantments.ENCHANTMENT_HOPE,
+                DEE_Enchantments.CURSE_DESPAIR);
 
         this.builder(EnchantmentTags.CURSE).add(
                 Enchantments.BINDING_CURSE,
@@ -143,19 +153,19 @@ public class DEE_EnchantmentTagProvider extends EnchantmentTagProvider {
                 DEE_Enchantments.CURSE_IMPALED,
                 DEE_Enchantments.CURSE_STONES,
                 DEE_Enchantments.CURSE_MISFORTUNE,
-                //Thieving
+                DEE_Enchantments.CURSE_THIEVING,
                 DEE_Enchantments.CURSE_LOSS,
-                //P.O.
+                DEE_Enchantments.CURSE_POLLUTED_OCEANS,
                 DEE_Enchantments.CURSE_FUMBLING,
                 DEE_Enchantments.CURSE_UNENDING,
-                //G.L.
+                DEE_Enchantments.CURSE_GUARDIAN_LURE,
                 DEE_Enchantments.CURSE_DROWNING,
                 DEE_Enchantments.CURSE_THALASSOPHOBIA,
                 DEE_Enchantments.CURSE_SOULLESS,
                 DEE_Enchantments.CURSE_RESONATING,
                 DEE_Enchantments.CURSE_UNFIT,
                 DEE_Enchantments.CURSE_IRON_MAIDEN,
-                //Deceitful
+                DEE_Enchantments.CURSE_DECEITFULNESS,
                 DEE_Enchantments.CURSE_FRAGILE,
                 DEE_Enchantments.CURSE_CONSUMPTION,
                 DEE_Enchantments.CURSE_WORSEN,
@@ -164,11 +174,16 @@ public class DEE_EnchantmentTagProvider extends EnchantmentTagProvider {
                 DEE_Enchantments.CURSE_JUPITER,
                 DEE_Enchantments.CURSE_DRAG,
                 DEE_Enchantments.CURSE_SPREAD,
-                DEE_Enchantments.NM_GROWTH
+                DEE_Enchantments.NM_GROWTH,
+                DEE_Enchantments.CURSE_BLUNT,
+                DEE_Enchantments.CURSE_SHORTNESS,
+                DEE_Enchantments.CURSE_FATIGUE,
+                DEE_Enchantments.CURSE_DESPAIR
         );
 
         this.builder(EnchantmentTags.ON_RANDOM_LOOT).addTag(EnchantmentTags.CURSE);
         this.builder(EnchantmentTags.ON_MOB_SPAWN_EQUIPMENT).addTag(EnchantmentTags.CURSE);
         this.builder(EnchantmentTags.ON_TRADED_EQUIPMENT).addTag(EnchantmentTags.CURSE);
+        this.builder(EnchantmentTags.IN_ENCHANTING_TABLE).addTag(EnchantmentTags.CURSE);
     }
 }

@@ -7,11 +7,19 @@
     "minecraft:item_damage": [
       {
         "effect": {
-          "type": "minecraft:add",
-          "value": {
-            "type": "minecraft:linear",
-            "base": 0.165,
-            "per_level_above_first": 0.065
+          "type": "minecraft:remove_binomial",
+          "chance": {
+            "type": "minecraft:fraction",
+            "denominator": {
+              "type": "minecraft:linear",
+              "base": 10.0,
+              "per_level_above_first": 5.0
+            },
+            "numerator": {
+              "type": "minecraft:linear",
+              "base": 2.0,
+              "per_level_above_first": 2.0
+            }
           }
         },
         "requirements": {
@@ -23,11 +31,19 @@
       },
       {
         "effect": {
-          "type": "minecraft:add",
-          "value": {
-            "type": "minecraft:linear",
-            "base": 0.435,
-            "per_level_above_first": 0.035
+          "type": "minecraft:remove_binomial",
+          "chance": {
+            "type": "minecraft:fraction",
+            "denominator": {
+              "type": "minecraft:linear",
+              "base": 2.0,
+              "per_level_above_first": 1.0
+            },
+            "numerator": {
+              "type": "minecraft:linear",
+              "base": 1.0,
+              "per_level_above_first": 1.0
+            }
           }
         },
         "requirements": {
@@ -55,5 +71,5 @@
     "any"
   ],
   "supported_items": "#minecraft:enchantable/durability",
-  "weight": 5
+  "weight": 10
 }

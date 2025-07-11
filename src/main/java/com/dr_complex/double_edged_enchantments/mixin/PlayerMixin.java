@@ -3,6 +3,7 @@ package com.dr_complex.double_edged_enchantments.mixin;
 import com.dr_complex.double_edged_enchantments.enchantments.DEE_Enchantments;
 import com.dr_complex.double_edged_enchantments.utils.DEE_Tags;
 import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
@@ -13,6 +14,8 @@ import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.ItemStack;
+import net.minecraft.registry.Registry;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
@@ -76,9 +79,20 @@ public abstract class PlayerMixin extends LivingEntity{
     @Inject(method = "getBlockInteractionRange",at =@At("TAIL"), cancellable = true)
     private void RangeBlock(CallbackInfoReturnable<Double> cir){
         ItemStack ITEM_STACK = this.getMainHandStack();
+        double AddedRange = 0;
+        World world = getWorld();
+        Registry<Enchantment> manager = world.getRegistryManager().getOrThrow(RegistryKeys.ENCHANTMENT);
+        RegistryEntry<Enchantment> Curse = manager.getEntry(manager.get(DEE_Enchantments.CURSE_SHORTNESS.getValue()));
+        RegistryEntry<Enchantment> Enchantment = manager.getEntry(manager.get(DEE_Enchantments.ENCHANTMENT_RANGE.getValue()));
+
         if(ITEM_STACK.isIn(DEE_Tags.Items.SPEAR_WEAPONS)){
-            cir.setReturnValue(this.getAttributeValue(EntityAttributes.BLOCK_INTERACTION_RANGE) + 3);
+            AddedRange = 3.5;
         }
+
+        AddedRange += ITEM_STACK.getEnchantments().getLevel(Enchantment) * 0.75;
+        AddedRange -= ITEM_STACK.getEnchantments().getLevel(Curse) * 0.5;
+
+        cir.setReturnValue(this.getAttributeValue(EntityAttributes.BLOCK_INTERACTION_RANGE) + AddedRange);
     }
 
     @Inject(method = "getEntityInteractionRange",at =@At("TAIL"), cancellable = true)

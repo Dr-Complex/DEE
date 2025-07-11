@@ -1,7 +1,6 @@
 package com.dr_complex.double_edged_enchantments.mixin;
 
 import com.dr_complex.double_edged_enchantments.enchantments.DEE_Enchantments;
-import com.dr_complex.double_edged_enchantments.item.DEE_Items;
 import it.unimi.dsi.fastutil.objects.Object2IntMap;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -58,7 +57,7 @@ public abstract class LootTables {
                             }else if(stack.isOf(Items.RAW_IRON) && world.random.nextFloat() >= (float) 1 /levels.get(index)){
                                 dropStack(world,pos,new ItemStack(Items.IRON_NUGGET));
                             }else if(stack.isOf(Items.RAW_COPPER) && world.random.nextFloat() >= (float) 1 /levels.get(index)){
-                                dropStack(world,pos,new ItemStack(DEE_Items.COPPER_NUGGET));
+                                dropStack(world,pos,new ItemStack(Items.COPPER_ORE));
                             }else if(stack.isOf(Items.RAW_GOLD) && world.random.nextFloat() >= (float) 1 /levels.get(index)){
                                 dropStack(world,pos,new ItemStack(Items.GOLD_NUGGET));
                             }else if(stack.isOf(Items.GOLD_NUGGET) && world.random.nextFloat() >= (float) 1 /levels.get(index)){

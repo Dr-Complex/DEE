@@ -8,40 +8,10 @@
       {
         "amount": {
           "type": "minecraft:linear",
-          "base": 0.075,
-          "per_level_above_first": 0.075
+          "base": 0.175,
+          "per_level_above_first": 0.175
         },
         "attribute": "minecraft:scale",
-        "id": "double_edged_enchantments:neutral_magic_growth",
-        "operation": "add_value"
-      },
-      {
-        "amount": {
-          "type": "minecraft:linear",
-          "base": 0.05,
-          "per_level_above_first": 0.05
-        },
-        "attribute": "minecraft:step_height",
-        "id": "double_edged_enchantments:neutral_magic_growth",
-        "operation": "add_value"
-      },
-      {
-        "amount": {
-          "type": "minecraft:linear",
-          "base": 0.025,
-          "per_level_above_first": 0.025
-        },
-        "attribute": "minecraft:block_interaction_range",
-        "id": "double_edged_enchantments:neutral_magic_growth",
-        "operation": "add_value"
-      },
-      {
-        "amount": {
-          "type": "minecraft:linear",
-          "base": 0.025,
-          "per_level_above_first": 0.025
-        },
-        "attribute": "minecraft:entity_interaction_range",
         "id": "double_edged_enchantments:neutral_magic_growth",
         "operation": "add_value"
       }
@@ -51,7 +21,7 @@
     "base": 10,
     "per_level_above_first": 2
   },
-  "max_level": 1,
+  "max_level": 10,
   "min_cost": {
     "base": 5,
     "per_level_above_first": 2

@@ -1,14 +1,17 @@
 package com.dr_complex.double_edged_enchantments;
 
+import com.dr_complex.double_edged_enchantments.block.entity.DEE_BlockEntityTypes;
+import com.dr_complex.double_edged_enchantments.block.entity.HexingTableBlockEntityRenderer;
 import com.dr_complex.double_edged_enchantments.client.AbstractSpearEntityRenderer;
-import com.dr_complex.double_edged_enchantments.screen.HexingTableScreen;
 import com.dr_complex.double_edged_enchantments.client.SpearEntityModel;
 import com.dr_complex.double_edged_enchantments.entity.DEE_Entities;
 import com.dr_complex.double_edged_enchantments.screen.DEE_ScreenHandlers;
+import com.dr_complex.double_edged_enchantments.screen.HexingTableScreen;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.minecraft.client.gui.screen.ingame.HandledScreens;
+import net.minecraft.client.render.block.entity.BlockEntityRendererFactories;
 
 public final class DEE_Client implements ClientModInitializer {
     @Override
@@ -23,6 +26,8 @@ public final class DEE_Client implements ClientModInitializer {
         EntityRendererRegistry.register(DEE_Entities.DIAMOND_SPEAR_ENTITY_TYPE, AbstractSpearEntityRenderer::new);
         EntityRendererRegistry.register(DEE_Entities.NETHERITE_SPEAR_ENTITY_TYPE, AbstractSpearEntityRenderer::new);
         EntityRendererRegistry.register(DEE_Entities.JETTATIUM_SPEAR_ENTITY_TYPE, AbstractSpearEntityRenderer::new);
+
         HandledScreens.register(DEE_ScreenHandlers.HEXING_TABLE_SCREEN_HANDLER, HexingTableScreen::new);
+        BlockEntityRendererFactories.register(DEE_BlockEntityTypes.HexingTableBlockEntityType, HexingTableBlockEntityRenderer::new);
     }
 }

@@ -3,7 +3,7 @@ package com.dr_complex.double_edged_enchantments;
 import com.dr_complex.double_edged_enchantments.block.DEE_Blocks;
 import com.dr_complex.double_edged_enchantments.enchantments.DEE_Enchantment_Effects;
 import com.dr_complex.double_edged_enchantments.entity.DEE_Entities;
-import com.dr_complex.double_edged_enchantments.entity.block.DEE_BlockEntityTypes;
+import com.dr_complex.double_edged_enchantments.block.entity.DEE_BlockEntityTypes;
 import com.dr_complex.double_edged_enchantments.item.DEE_ItemGroup;
 import com.dr_complex.double_edged_enchantments.item.DEE_Items;
 import com.dr_complex.double_edged_enchantments.screen.DEE_ScreenHandlers;

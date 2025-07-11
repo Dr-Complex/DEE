@@ -14,7 +14,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-@Mixin(value = RangedWeaponItem.class)
+@Mixin(RangedWeaponItem.class)
 public class RangedWeaponMixin {
 
     @Inject(method = "getProjectile",at = @At("HEAD"), cancellable = true)

@@ -21,17 +21,7 @@
         "affected": "victim",
         "effect": {
           "type": "double_edged_enchantments:curse_damage_backlash",
-          "chance": 1.0,
-          "max": {
-            "type": "minecraft:linear",
-            "base": 1.5,
-            "per_level_above_first": 0.75
-          },
-          "min": {
-            "type": "minecraft:linear",
-            "base": 0.75,
-            "per_level_above_first": 0.5
-          }
+          "chance": 1.0
         },
         "enchanted": "victim",
         "requirements": {

@@ -1,4 +1,4 @@
-package com.dr_complex.double_edged_enchantments.entity.block;
+package com.dr_complex.double_edged_enchantments.block.entity;
 
 import com.dr_complex.double_edged_enchantments.DEE_Common;
 import com.dr_complex.double_edged_enchantments.block.DEE_Blocks;

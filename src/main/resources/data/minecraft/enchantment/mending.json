@@ -10,8 +10,8 @@
           "type": "minecraft:add",
           "value": {
             "type": "minecraft:linear",
-            "base": 1.25,
-            "per_level_above_first": 0.75
+            "base": 1,
+            "per_level_above_first": 0.5
           }
         }
       }
@@ -30,5 +30,5 @@
     "any"
   ],
   "supported_items": "#minecraft:enchantable/durability",
-  "weight": 2
+  "weight": 10
 }

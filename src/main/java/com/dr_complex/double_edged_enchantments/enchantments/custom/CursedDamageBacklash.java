@@ -16,11 +16,9 @@ import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.Vec3d;
 import org.jetbrains.annotations.NotNull;
 
-public record CursedDamageBacklash(EnchantmentLevelBasedValue min, EnchantmentLevelBasedValue max,float chance) implements EnchantmentEntityEffect {
+public record CursedDamageBacklash(float chance) implements EnchantmentEntityEffect {
 
     public static final MapCodec<CursedDamageBacklash> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
-            EnchantmentLevelBasedValue.CODEC.fieldOf("min").forGetter(CursedDamageBacklash::min),
-            EnchantmentLevelBasedValue.CODEC.fieldOf("max").forGetter(CursedDamageBacklash::max),
             Codec.FLOAT.fieldOf("chance").forGetter(CursedDamageBacklash::chance)
     ).apply(instance, CursedDamageBacklash::new));
 
@@ -28,9 +26,9 @@ public record CursedDamageBacklash(EnchantmentLevelBasedValue min, EnchantmentLe
 
     @Override
     public void apply(ServerWorld world, int level, @NotNull EnchantmentEffectContext context, Entity user, Vec3d pos) {
-        if(context.owner() != null && world.random.nextFloat() <= chance){
-            var damage = new DamageSource(world.getRegistryManager().getOrThrow(RegistryKeys.DAMAGE_TYPE).getOrThrow(CURSE_BACKLASH));
-            context.owner().damage(world,damage,level);
+        if(context.owner() != null && world.random.nextBetween(0,1000)/1000f <= chance){
+            DamageSource damage = new DamageSource(world.getRegistryManager().getOrThrow(RegistryKeys.DAMAGE_TYPE).getOrThrow(CURSE_BACKLASH));
+            context.owner().damage(world,damage,level*level);
         }
     }
 

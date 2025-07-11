@@ -10,12 +10,14 @@
     "AttributeModifierMixin",
     "CrossbowMixin",
     "EnchantmentHelperMixin",
+    "FishingBobberEntityMixin",
     "LivingMixin",
     "LootTables",
     "PersistentProjectileEntityMixin",
     "PlayerMixin",
     "RangedWeaponItemMixin",
     "RangedWeaponMixin",
-    "ReturnItemStackMixin"
+    "ReturnItemStackMixin",
+    "TridentEntityMixin"
   ]
 }

@@ -6,103 +6,66 @@ import net.fabricmc.api.Environment;
 import net.minecraft.client.gl.RenderPipelines;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
-import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.Items;
-import net.minecraft.registry.entry.RegistryEntry;
-import net.minecraft.screen.slot.Slot;
-import net.minecraft.text.StringVisitable;
 import net.minecraft.text.Text;
+import net.minecraft.util.Colors;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.List;
 import java.util.Objects;
 
 @Environment(EnvType.CLIENT)
 public class HexingTableScreen extends HandledScreen<HexingTableScreenHandler> {
-    private static final Identifier MainTexture = DEE_Common.id("textures/gui/sprites/container/hexing_table.png");
-    private static final Identifier EnchantmentTexture = DEE_Common.id("textures/gui/sprites/container/enchantment.png");
-    private static final Identifier CurseTexture = DEE_Common.id("textures/gui/sprites/container/curse.png");
-    private static final Identifier UpTexture = DEE_Common.id("textures/gui/sprites/container/up.png");
-    private static final Identifier DownTexture = DEE_Common.id("textures/gui/sprites/container/down.png");
-    private int ticks;
-
+    private static final Identifier MainTexture = DEE_Common.id("textures/gui/container/background.png");
+    private static final Identifier Upgrade = DEE_Common.id("container/slot/upgrade_gen");
+    private static final Identifier Downgrade = DEE_Common.id("container/slot/downgrade_gen");
+    float time = 0.0f;
 
     public HexingTableScreen(HexingTableScreenHandler handler, PlayerInventory inventory, Text title) {
         super(handler, inventory, title);
-        this.ticks = 0;
     }
 
     @Override
     protected void drawBackground(@NotNull DrawContext context, float delta, int mouseX, int mouseY) {
-        int x = this.x;
-        int y = this.y;
-        context.drawTexture(RenderPipelines.GUI_TEXTURED, MainTexture,x,y,0,0,backgroundWidth,backgroundHeight,256,256);
-        Slot LevelerSlot = this.handler.getSlot(1);
-        Slot ConductorSlot = this.handler.getSlot(2);
+        int i = (this.width - this.backgroundWidth) / 2;
+        int j = (this.height - this.backgroundHeight) / 2;
 
-        if(!LevelerSlot.hasStack()){
-            if(ticks >= 150){
-                context.drawGuiTexture(RenderPipelines.GUI_TEXTURED,UpTexture,x + LevelerSlot.x, y + LevelerSlot.y, 0, 0,16,16,16,16);
-            }else {
-                context.drawGuiTexture(RenderPipelines.GUI_TEXTURED,DownTexture,x + LevelerSlot.x, y + LevelerSlot.y, 0, 0,16,16,16,16);
-            }
-        }
-        if(!ConductorSlot.hasStack()){
-            if(ticks % 150 >= 75){
-                context.drawGuiTexture(RenderPipelines.GUI_TEXTURED,EnchantmentTexture,x + ConductorSlot.x, y + ConductorSlot.y, 0, 0,16,16,16,16);
-            }else {
-                context.drawGuiTexture(RenderPipelines.GUI_TEXTURED,CurseTexture,x + ConductorSlot.x, y + ConductorSlot.y, 0, 0,16,16,16,16);
-            }
+        time += 0.05f;
+        if(time >= 360f){
+            time = 0.0f;
         }
 
-        int l = x + 62;
-        int m = y + 12;
+        context.drawTexture(RenderPipelines.GUI_TEXTURED, MainTexture,
+                i, j, 0, 0,
+                backgroundWidth, backgroundHeight,
+                256, 256);
 
-        List<RegistryEntry<Enchantment>> list = this.handler.getEnchants();
-
-        label64:
-        if (list != null) {
-            for (int n = 0; n < 3; n++) {
-                for (int o = 0; o < 6; o++) {
-                    int q = n * 6 + o;
-                    if (q >= list.size()) {
-                        break label64;
-                    }
-                    int r = l + o * 16;
-                    int s = m + n * 16;
-                    boolean bl = mouseX >= r && mouseY >= s && mouseX < r + 16 && mouseY < s + 16;
-                    int highlight;
-                    if (bl) {
-                        if(ConductorSlot.getStack().isOf(Items.LAPIS_LAZULI)){
-                            highlight = 0x75ffffff;
-                        }else {
-                            highlight = 0x75010101;
-                        }
-
-                    } else {
-                        highlight = 0x75808080;
-                    }
-
-                    context.drawWrappedText(this.textRenderer, StringVisitable.plain(String.valueOf(q)),r,s,highlight,0x000000,false);
-                    if(bl){
-                        context.drawTooltip(this.textRenderer,Text.translatable(list.get(q).value().toString()),r,s);
-                    }
-                }
+        int tempF = this.handler.getFuel();
+        int F = MathHelper.clamp(tempF, 0, 31);
+        if(F > 0){
+            for (int k1 = 0; k1 < F; k1++) {
+                context.drawHorizontalLine(
+                        MathHelper.floor(MathHelper.sin((time + 2*k1)/(2*MathHelper.PI)) * 5)+i+15,
+                        MathHelper.floor(MathHelper.sin((time + 2*k1)/(2*MathHelper.PI)) * 5)+i+19,
+                        47-k1+j, Colors.PURPLE
+                );
+            }for (int k2 = 0; k2 < F; k2++) {
+                context.drawHorizontalLine(
+                        MathHelper.floor(MathHelper.sin((time + 2*k2)/(2*MathHelper.PI)) * 5)+i+19,
+                        MathHelper.floor(MathHelper.sin((time + 2*k2)/(2*MathHelper.PI)) * 5)+i+20,
+                        47-k2+j, Colors.LIGHT_PINK
+                );
             }
-
-
-            this.ticks = MathHelper.floorMod(ticks + 1,600);
         }
     }
 
     @Override
     public void render(DrawContext context, int mouseX, int mouseY, float delta) {
-        this.renderBackground(context, mouseX, mouseY, delta);
         super.render(context, mouseX, mouseY, delta);
-        this.drawMouseoverTooltip(context,mouseX,mouseY);
+        DrawExtraSlots(context, mouseX, mouseY, delta);
+        drawMouseoverTooltip(context,mouseX,mouseY);
     }
 
     @Override
@@ -117,11 +80,11 @@ public class HexingTableScreen extends HandledScreen<HexingTableScreenHandler> {
     public boolean mouseClicked(double mouseX, double mouseY, int button) {
         int i = this.x + 62;
         int j = this.y + 12;
-        for (int k = 0; k < 3; k++) {
-            for (int l = 0; l < 6; l++) {
-                double d = mouseX - (double) (i + l * 16);
-                double e = mouseY - (double) (j + k * 16);
-                int n = k * 6 + l;
+        for (int y = 0; y < 3; y++) {
+            for (int x = 0; x < 6; x++) {
+                double d = mouseX - (double) (i + x * 16);
+                double e = mouseY - (double) (j + y * 16);
+                int n = y * 6 + x;
                 if (d >= 0.0 && e >= 0.0 && d < 16 && e < 16 && this.handler.onButtonClick(Objects.requireNonNull(this.client).player, n)) {
                     Objects.requireNonNull(this.client.interactionManager).clickButton(this.handler.syncId, n);
                     return true;
@@ -131,4 +94,45 @@ public class HexingTableScreen extends HandledScreen<HexingTableScreenHandler> {
         return super.mouseClicked(mouseX, mouseY, button);
     }
 
+    private void DrawExtraSlots(DrawContext context,int MouseX, int MouseY, float delta) {
+        int i = this.x + 62;
+        int j = this.y + 12;
+        if (!this.handler.getSlot(0).getStack().isEmpty() && !this.handler.getSlot(1).getStack().isEmpty() && !this.handler.getSlot(2).getStack().isEmpty()) {
+            if (this.handler.getEnchants() != null) {
+                for (int y = 0; y < 3; y++) {
+                    for (int x = 0; x < 6; x++) {
+                        double d = MouseX - (double) (i + x * 16);
+                        double e = MouseY - (double) (j + y * 16);
+                        int n = y * 6 + x;
+                        int colour = Colors.DARK_GRAY;
+
+                        if (d >= 0.0 && e >= 0.0 && d < 16 && e < 16 && n < this.handler.getEnchants().size()) {
+                            colour = Colors.LIGHT_YELLOW;
+                        }
+                        if(this.handler.getFuel() <= 0){
+                            colour = Colors.RED;
+                        }
+
+                        if (this.handler.getSlot(1).getStack().isOf(Items.LAPIS_LAZULI)) {
+                            context.drawGuiTexture(RenderPipelines.GUI_TEXTURED, Upgrade, 16, 16, 0, 0, (i + x * 16), (j + y * 16), 16, 16, colour);
+                        } else {
+                            context.drawGuiTexture(RenderPipelines.GUI_TEXTURED, Downgrade, 16, 16, 0, 0, (i + x * 16), (j + y * 16), 16, 16, colour);
+                        }
+                    }
+                }
+                for (int Y = 0; Y < 3; Y++) {
+                    for (int X = 0; X < 6; X++) {
+                        if (this.handler.getEnchants() != null) {
+                            double d = MouseX - (double) (i + X * 16);
+                            double e = MouseY - (double) (j + Y * 16);
+                            int n = Y * 6 + X;
+                            if (d >= 0.0 && e >= 0.0 && d < 16 && e < 16 && n < this.handler.getEnchants().size()) {
+                                context.drawText(textRenderer, Text.translatable(this.handler.getEnchants().get(n).getKey().toString()), MouseX, MouseY, Colors.ALTERNATE_WHITE, true);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }

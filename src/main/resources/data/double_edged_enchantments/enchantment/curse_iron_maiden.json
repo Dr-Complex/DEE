@@ -9,17 +9,7 @@
         "affected": "victim",
         "effect": {
           "type": "double_edged_enchantments:curse_damage_backlash",
-          "chance": 0.75,
-          "max": {
-            "type": "minecraft:linear",
-            "base": 0.75,
-            "per_level_above_first": 0.375
-          },
-          "min": {
-            "type": "minecraft:linear",
-            "base": 0.5,
-            "per_level_above_first": 0.25
-          }
+          "chance": 0.75
         },
         "enchanted": "victim"
       },
@@ -27,17 +17,7 @@
         "affected": "victim",
         "effect": {
           "type": "double_edged_enchantments:curse_damage_backlash",
-          "chance": 1.0E-4,
-          "max": {
-            "type": "minecraft:linear",
-            "base": 1000.0,
-            "per_level_above_first": 350.0
-          },
-          "min": {
-            "type": "minecraft:linear",
-            "base": 1000.0,
-            "per_level_above_first": 100.0
-          }
+          "chance": 1.0E-6
         },
         "enchanted": "victim"
       }

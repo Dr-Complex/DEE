@@ -43,27 +43,19 @@ public class DEE_ItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(Items.OMINOUS_BOTTLE)
                 .add(Items.EXPERIENCE_BOTTLE);
 
-        valueLookupBuilder(DEE_Tags.Items.REPAIR_COPPER)
-                .add(Items.COPPER_INGOT);
-
         valueLookupBuilder(ItemTags.SWORDS)
-                .add(DEE_Items.JETTATIUM_SWORD)
-                .add(DEE_Items.COPPER_SWORD);
+                .add(DEE_Items.JETTATIUM_SWORD);
 
         valueLookupBuilder(ItemTags.PICKAXES)
-                .add(DEE_Items.JETTATIUM_PICKAXE)
-                .add(DEE_Items.COPPER_PICKAXE);
+                .add(DEE_Items.JETTATIUM_PICKAXE);
 
         valueLookupBuilder(ItemTags.AXES)
-                .add(DEE_Items.JETTATIUM_AXE)
-                .add(DEE_Items.COPPER_AXE);
+                .add(DEE_Items.JETTATIUM_AXE);
 
         valueLookupBuilder(ItemTags.SHOVELS)
-                .add(DEE_Items.JETTATIUM_SHOVEL)
-                .add(DEE_Items.COPPER_SHOVEL);
+                .add(DEE_Items.JETTATIUM_SHOVEL);
 
         valueLookupBuilder(ItemTags.HOES)
-                .add(DEE_Items.JETTATIUM_HOE)
-                .add(DEE_Items.COPPER_HOE);
+                .add(DEE_Items.JETTATIUM_HOE);
     }
 }

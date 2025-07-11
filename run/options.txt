@@ -1,4 +1,4 @@
-version:4435
+version:4438
 ao:true
 biomeBlendRadius:2
 enableVsync:false
@@ -50,7 +50,7 @@ hideSplashTexts:false
 mouseSensitivity:0.5
 damageTiltStrength:1.0
 highContrast:false
-highContrastBlockOutline:true
+highContrastBlockOutline:false
 narratorHotkey:false
 resourcePacks:["fabric"]
 incompatibleResourcePacks:[]

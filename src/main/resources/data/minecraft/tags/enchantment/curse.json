@@ -26,15 +26,19 @@
     "double_edged_enchantments:curse_impaled",
     "double_edged_enchantments:curse_stones",
     "double_edged_enchantments:curse_misfortune",
+    "double_edged_enchantments:curse_thieving",
     "double_edged_enchantments:curse_loss",
+    "double_edged_enchantments:curse_polluted_oceans",
     "double_edged_enchantments:curse_fumbling",
     "double_edged_enchantments:curse_unending",
+    "double_edged_enchantments:curse_guardian_lure",
     "double_edged_enchantments:curse_drowning",
     "double_edged_enchantments:curse_thalassophobia",
     "double_edged_enchantments:curse_soulless",
     "double_edged_enchantments:curse_resonating",
     "double_edged_enchantments:curse_unfit",
     "double_edged_enchantments:curse_iron_maiden",
+    "double_edged_enchantments:curse_deceitfulness",
     "double_edged_enchantments:curse_fragile",
     "double_edged_enchantments:curse_consumption",
     "double_edged_enchantments:curse_worsen",
@@ -43,6 +47,10 @@
     "double_edged_enchantments:curse_jupiter",
     "double_edged_enchantments:curse_drag",
     "double_edged_enchantments:curse_spread",
-    "double_edged_enchantments:neutral_magic_growth"
+    "double_edged_enchantments:neutral_magic_growth",
+    "double_edged_enchantments:curse_blunt",
+    "double_edged_enchantments:curse_shortness",
+    "double_edged_enchantments:curse_fatigue",
+    "double_edged_enchantments:curse_despair"
   ]
 }

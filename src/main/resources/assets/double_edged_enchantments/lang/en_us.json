@@ -6,7 +6,6 @@
   "item.double_edged_enchantments.reverted_ender_pearl": "Echo-Pearl",
   "item.double_edged_enchantments.raw_jattatium": "Raw Jattatium",
   "item.double_edged_enchantments.cut_jattatium": "Cut Jattatium",
-  "item.double_edged_enchantments.copper_nugget": "Copper Nugget",
 
   "item.double_edged_enchantments.wooden_spear": "Wooden Spear",
   "item.double_edged_enchantments.stone_spear": "Stone Spear",
@@ -79,6 +78,11 @@
   "enchantment.double_edged_enchantments.curse_misfortune": "Curse of Misfortune",
   "enchantment.double_edged_enchantments.curse_deep": "Curse of Deep",
   "enchantment.double_edged_enchantments.curse_evaporation": "Curse of Evaporation",
+  "enchantment.double_edged_enchantments.curse_conductiveness": "Curse of Conductiveness",
+  "enchantment.double_edged_enchantments.curse_thieving": "Curse of Thieving",
+  "enchantment.double_edged_enchantments.curse_deceitfulness": "Curse of Deceitfulness",
+  "enchantment.double_edged_enchantments.curse_polluted_oceans": "Curse of Polluted Oceans",
+  "enchantment.double_edged_enchantments.curse_guardian_lure": "Curse of Guardian Lure",
 
   "enchantment.double_edged_enchantments.enchantment_lucky": "Lucky",
   "enchantment.double_edged_enchantments.enchantment_criticality": "Criticality",
@@ -86,6 +90,7 @@
   "enchantment.double_edged_enchantments.enchantment_return": "Return",
   "enchantment.double_edged_enchantments.enchantment_accurate": "Accurate",
   "enchantment.double_edged_enchantments.enchantment_aerodynamic": "Aerodynamic",
+  "enchantment.double_edged_enchantments.enchantment_absorbing": "Absorbing",
 
   "enchantment.double_edged_enchantments.neutral_magic_growth": "Growth",
   "enchantment.double_edged_enchantments.neutral_magic_shrunken": "Shrunken",
@@ -98,8 +103,7 @@
 
   "stat.double_edged_enchantments.cursed_stat": "Cursed Item",
 
-  "death.attack.curse_backlash": "%1$s was Cursed to death",
+  "death.attack.curse_backlash": "%1$s was §4Cursed§r to death",
 
   "container.hexing_table": "Hexing Table"
-
 }

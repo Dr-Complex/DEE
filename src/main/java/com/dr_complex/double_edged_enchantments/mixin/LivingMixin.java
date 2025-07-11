@@ -1,5 +1,9 @@
 package com.dr_complex.double_edged_enchantments.mixin;
 
+import com.dr_complex.double_edged_enchantments.enchantments.DEE_Enchantments;
+import net.minecraft.component.DataComponentTypes;
+import net.minecraft.component.type.WeaponComponent;
+import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.*;
 import net.minecraft.entity.attribute.AttributeContainer;
 import net.minecraft.entity.attribute.EntityAttribute;
@@ -8,6 +12,9 @@ import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffects;
+import net.minecraft.item.ItemStack;
+import net.minecraft.registry.Registry;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.registry.tag.FluidTags;
 import net.minecraft.util.math.MathHelper;
@@ -45,6 +52,8 @@ public abstract class LivingMixin extends Entity implements Attackable {
     @Shadow public abstract double getAttributeValue(RegistryEntry<EntityAttribute> attribute);
 
     @Shadow public abstract void onAttacking(Entity target);
+
+    @Shadow public abstract ItemStack getActiveItem();
 
     public LivingMixin(EntityType<?> type, World world) {
         super(type, world);
@@ -143,5 +152,24 @@ public abstract class LivingMixin extends Entity implements Attackable {
             this.setVelocity(vec3d.x / 2.0 - vec3d2.x, this.isOnGround() ? Math.min(0.4, vec3d.y / 2.0 + strength) : vec3d.y, vec3d.z / 2.0 - vec3d2.z);
         }
         ci.cancel();
+    }
+
+    @Inject(method = "getWeaponDisableBlockingForSeconds",at = @At("RETURN"), cancellable = true)
+    private void DisablingShield(CallbackInfoReturnable<Float> cir){
+        WeaponComponent weaponComponent = Objects.requireNonNull(this.getWeaponStack()).get(DataComponentTypes.WEAPON);
+
+        World world = getWorld();
+        Registry<Enchantment> manager = world.getRegistryManager().getOrThrow(RegistryKeys.ENCHANTMENT);
+        RegistryEntry<Enchantment> Curse = manager.getEntry(manager.get(DEE_Enchantments.CURSE_BLUNT.getValue()));
+        RegistryEntry<Enchantment> Enchantment = manager.getEntry(manager.get(DEE_Enchantments.ENCHANTMENT_CLEAVING.getValue()));
+
+        float reworked = 0.75f*this.getActiveItem().getEnchantments().getLevel(Enchantment) - 0.78f*this.getActiveItem().getEnchantments().getLevel(Curse);
+        float normally = weaponComponent != null ? weaponComponent.disableBlockingForSeconds() : 0.0F;
+        if(normally + reworked >= 0){
+            cir.setReturnValue(normally + reworked);
+        }else {
+            cir.setReturnValue(0.0f);
+        }
+
     }
 }
