@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "double_edged_enchantments:raw_jattatium",
+  "result": {
+    "count": 1,
+    "id": "double_edged_enchantments:cut_jattatium"
+  }
+}

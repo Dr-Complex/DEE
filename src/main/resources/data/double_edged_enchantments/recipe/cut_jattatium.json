@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "double_edged_enchantments:jettatuim_block"
+  ],
+  "result": {
+    "count": 9,
+    "id": "double_edged_enchantments:cut_jattatium"
+  }
+}

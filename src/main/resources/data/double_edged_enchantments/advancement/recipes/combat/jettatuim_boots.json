@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_cut_jattatium": {
+      "conditions": {
+        "items": [
+          {
+            "items": "double_edged_enchantments:cut_jattatium"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "double_edged_enchantments:jettatuim_boots"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_cut_jattatium"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "double_edged_enchantments:jettatuim_boots"
+    ]
+  }
+}

@@ -15,7 +15,9 @@ import java.util.function.Function;
 
 public class DEE_Blocks {
 
-    public static final Block HEXING_TABLE = register("hexing_table", HexingTableBlock::new,AbstractBlock.Settings.copy(Blocks.STONE).nonOpaque());
+    public static final Block HEXING_TABLE = register("hexing_table", HexingTableBlock::new,AbstractBlock.Settings.copy(Blocks.OBSIDIAN).nonOpaque());
+    public static final Block JETTATUIM = register("jettatuim_block", AbstractBlock.Settings.copy(Blocks.NETHERITE_BLOCK).nonOpaque());
+    public static final Block JETTATUIM_ORE = register("jettatuim_ore_end", AbstractBlock.Settings.copy(Blocks.DIAMOND_ORE).nonOpaque());
 
     public static Block register(RegistryKey<Block> key, @NotNull Function<AbstractBlock.Settings, Block> factory, AbstractBlock.@NotNull Settings settings) {
         Block block = factory.apply(settings.registryKey(key));

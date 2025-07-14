@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "double_edged_enchantments:block/jettatuim_ore_end"
+  }
+}

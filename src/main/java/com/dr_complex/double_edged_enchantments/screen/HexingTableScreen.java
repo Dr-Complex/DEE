@@ -127,7 +127,9 @@ public class HexingTableScreen extends HandledScreen<HexingTableScreenHandler> {
                             double e = MouseY - (double) (j + Y * 16);
                             int n = Y * 6 + X;
                             if (d >= 0.0 && e >= 0.0 && d < 16 && e < 16 && n < this.handler.getEnchants().size()) {
-                                context.drawText(textRenderer, Text.translatable(this.handler.getEnchants().get(n).getKey().toString()), MouseX, MouseY, Colors.ALTERNATE_WHITE, true);
+                                var name = this.handler.getEnchants().get(n);
+                                var NewName = name.value().toString().replaceAll("Enchantment","");
+                                context.drawText(textRenderer, Text.translatable(NewName), MouseX, MouseY, Colors.ALTERNATE_WHITE, true);
                             }
                         }
                     }

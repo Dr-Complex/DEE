@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "double_edged_enchantments:item/jettatuim_leggings",
+    "layer1": "minecraft:trims/items/leggings_trim_copper"
+  }
+}

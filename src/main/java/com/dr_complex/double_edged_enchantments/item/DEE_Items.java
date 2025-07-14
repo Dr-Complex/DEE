@@ -7,20 +7,37 @@ import com.dr_complex.double_edged_enchantments.utils.DEE_Tags;
 import net.minecraft.block.Block;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.WeaponComponent;
+import net.minecraft.item.ArrowItem;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ToolMaterial;
+import net.minecraft.item.equipment.ArmorMaterial;
+import net.minecraft.item.equipment.EquipmentAsset;
+import net.minecraft.item.equipment.EquipmentAssetKeys;
+import net.minecraft.item.equipment.EquipmentType;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.tag.BlockTags;
+import net.minecraft.sound.SoundEvents;
+import net.minecraft.util.Identifier;
 
+import java.util.Map;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.function.UnaryOperator;
 
 public class DEE_Items {
+
+    public static final RegistryKey<EquipmentAsset> JettatuimEquipmentAssetKey = RegistryKey.of(EquipmentAssetKeys.REGISTRY_KEY, DEE_Common.id("jettatuim_asset_key"));
+
+    public static final ArmorMaterial JettatuimArmorMaterial = new ArmorMaterial(44, Map.of(
+            EquipmentType.HELMET, 2,
+            EquipmentType.CHESTPLATE, 6,
+            EquipmentType.LEGGINGS, 4,
+            EquipmentType.BOOTS, 5),75,
+            SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 0.25f, 0.01f, DEE_Tags.Items.REPAIR_JATTATIUM, JettatuimEquipmentAssetKey);
 
     public static final ToolMaterial JattatiumToolMaterial = new ToolMaterial(BlockTags.INCORRECT_FOR_NETHERITE_TOOL,4013,1.5f,7,2, DEE_Tags.Items.REPAIR_JATTATIUM);
 
@@ -39,13 +56,20 @@ public class DEE_Items {
     public static final Item COPPER_SPEAR = register("copper_spear", CopperSpearItem::new,new Item.Settings().maxDamage(193).attributeModifiers(CopperSpearItem.createAttributeModifiers()).enchantable(15).component(DataComponentTypes.WEAPON,new WeaponComponent(1)));
     public static final Item JETTATIUM_SPEAR = register("jettatium_spear", JettatiumSpearItem::new,new Item.Settings().maxDamage(4003).attributeModifiers(CopperSpearItem.createAttributeModifiers()).enchantable(2).component(DataComponentTypes.WEAPON,new WeaponComponent(1)));
 
-    public static final Item JETTATIUM_SWORD = register("jettatium_sword", JettatuimToolItem::new, new Item.Settings().sword(JattatiumToolMaterial,0, 0f));
-    public static final Item JETTATIUM_AXE = register("jettatium_axe", JettatuimToolItem::new, new Item.Settings().axe(JattatiumToolMaterial,0, 0f));
-    public static final Item JETTATIUM_PICKAXE = register("jettatium_pickaxe", JettatuimToolItem::new, new Item.Settings().pickaxe(JattatiumToolMaterial,0f, 0f));
-    public static final Item JETTATIUM_HOE = register("jettatium_hoe", JettatuimToolItem::new, new Item.Settings().hoe(JattatiumToolMaterial,0, 0f));
-    public static final Item JETTATIUM_SHOVEL = register("jettatium_shovel", JettatuimToolItem::new, new Item.Settings().shovel(JattatiumToolMaterial,0f, -0f));
+    public static final Item JETTATIUM_SWORD = register("jettatium_sword", JettatuimToolItem::new, new Item.Settings().sword(JattatiumToolMaterial, 4, -3.2f));
+    public static final Item JETTATIUM_AXE = register("jettatium_axe", JettatuimToolItem::new, new Item.Settings().axe(JattatiumToolMaterial, 8, -3.5f));
+    public static final Item JETTATIUM_PICKAXE = register("jettatium_pickaxe", JettatuimToolItem::new, new Item.Settings().pickaxe(JattatiumToolMaterial,0, -3.2f));
+    public static final Item JETTATIUM_HOE = register("jettatium_hoe", JettatuimToolItem::new, new Item.Settings().hoe(JattatiumToolMaterial, -5, -1f));
+    public static final Item JETTATIUM_SHOVEL = register("jettatium_shovel", JettatuimToolItem::new, new Item.Settings().shovel(JattatiumToolMaterial, -0.25f, -3.5f));
+
+    public static final Item JETTATUIM_HELMET = register("jettatuim_helmet",new Item.Settings().armor(JettatuimArmorMaterial, EquipmentType.HELMET).maxDamage(EquipmentType.HELMET.getMaxDamage(44)));
+    public static final Item JETTATUIM_CHEST_PLATE = register("jettatuim_chestplate",new Item.Settings().armor(JettatuimArmorMaterial, EquipmentType.CHESTPLATE).maxDamage(EquipmentType.CHESTPLATE.getMaxDamage(44)));
+    public static final Item JETTATUIM_LEGGINGS = register("jettatuim_leggings",new Item.Settings().armor(JettatuimArmorMaterial, EquipmentType.LEGGINGS).maxDamage(EquipmentType.LEGGINGS.getMaxDamage(44)));
+    public static final Item JETTATUIM_BOOTS = register("jettatuim_boots",new Item.Settings().armor(JettatuimArmorMaterial, EquipmentType.BOOTS).maxDamage(EquipmentType.BOOTS.getMaxDamage(44)));
 
     public static final Item HEXING_TABLE = register(DEE_Blocks.HEXING_TABLE);
+    public static final Item JETTATUIM_BLOCK = register(DEE_Blocks.JETTATUIM);
+    public static final Item JETTATUIM_BLOCK_ORE = register(DEE_Blocks.JETTATUIM_ORE);
 
     private static RegistryKey<Item> keyOf(String id) {
         return RegistryKey.of(RegistryKeys.ITEM, DEE_Common.id(id));

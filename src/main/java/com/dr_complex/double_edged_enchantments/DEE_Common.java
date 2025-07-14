@@ -9,6 +9,7 @@ import com.dr_complex.double_edged_enchantments.item.DEE_Items;
 import com.dr_complex.double_edged_enchantments.screen.DEE_ScreenHandlers;
 import com.dr_complex.double_edged_enchantments.utils.DEE_DataComponentTypes;
 import com.dr_complex.double_edged_enchantments.utils.DEE_ItemToolTips;
+import com.dr_complex.double_edged_enchantments.world.gen.DEE_WorldGen;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.Contract;
@@ -29,6 +30,7 @@ public final class DEE_Common implements ModInitializer {
     public void onInitialize() {
         LOGGER.info("Started with mod : {}", MOD_ID);
         DEE_Enchantment_Effects.LoadEnchantmentEffects();
+        DEE_WorldGen.generateAll();
         DEE_DataComponentTypes.LoadDataComponents();
         DEE_Blocks.LoadBlocks();
         DEE_Entities.LoadEntities();

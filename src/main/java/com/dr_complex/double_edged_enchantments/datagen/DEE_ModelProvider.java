@@ -20,6 +20,8 @@ public class DEE_ModelProvider extends FabricModelProvider {
     @Override
     public void generateBlockStateModels(@NotNull BlockStateModelGenerator blockStateModelGenerator) {
         blockStateModelGenerator.registerSimpleCubeAll(DEE_Blocks.HEXING_TABLE);
+        blockStateModelGenerator.registerSimpleCubeAll(DEE_Blocks.JETTATUIM);
+        blockStateModelGenerator.registerSimpleCubeAll(DEE_Blocks.JETTATUIM_ORE);
     }
 
     @Override
@@ -40,6 +42,11 @@ public class DEE_ModelProvider extends FabricModelProvider {
         itemModelGenerator.register(DEE_Items.JETTATIUM_SWORD,Models.HANDHELD);
         itemModelGenerator.register(DEE_Items.JETTATIUM_AXE,Models.HANDHELD);
         itemModelGenerator.register(DEE_Items.JETTATIUM_PICKAXE,Models.HANDHELD);
+
+        itemModelGenerator.registerArmor(DEE_Items.JETTATUIM_HELMET, DEE_Items.JettatuimEquipmentAssetKey, ItemModelGenerator.HELMET_TRIM_ID_PREFIX, false);
+        itemModelGenerator.registerArmor(DEE_Items.JETTATUIM_CHEST_PLATE, DEE_Items.JettatuimEquipmentAssetKey, ItemModelGenerator.CHESTPLATE_TRIM_ID_PREFIX, false);
+        itemModelGenerator.registerArmor(DEE_Items.JETTATUIM_LEGGINGS, DEE_Items.JettatuimEquipmentAssetKey, ItemModelGenerator.LEGGINGS_TRIM_ID_PREFIX, false);
+        itemModelGenerator.registerArmor(DEE_Items.JETTATUIM_BOOTS, DEE_Items.JettatuimEquipmentAssetKey, ItemModelGenerator.BOOTS_TRIM_ID_PREFIX, false);
 
     }
 }

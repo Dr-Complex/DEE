@@ -25,23 +25,25 @@ public record StatusEffectAdder(boolean good) implements EnchantmentEntityEffect
         if(user instanceof LivingEntity living && world.random.nextFloat() > 1f/level){
             luck = world.random.nextFloat();
             if(this.good){
-                if(luck >= 0.15 && luck <=0.16){
+                if(luck >= 0.015 && luck <=0.016){
                     instance = new StatusEffectInstance(StatusEffects.RESISTANCE,20*6,level-1);
-                } else if (luck >= 0.25 && luck <= 0.33) {
+                } else if (luck >= 0.025 && luck <= 0.033) {
                     instance = new StatusEffectInstance(StatusEffects.HEALTH_BOOST,20*3,level-1);
-                }else if(luck >= 0.5 && luck<= 0.7){
+                }else if(luck >= 0.05 && luck<= 0.07){
                     instance = new StatusEffectInstance(StatusEffects.REGENERATION,20*10,level-1);
                 }
             } else {
-                if(luck >= 0.0 && luck <=0.25){
+                if(luck >= 0.00 && luck <=0.025){
                     instance = new StatusEffectInstance(StatusEffects.BLINDNESS,20*30,level-1);
-                } else if (luck >= 0.25 && luck <= 0.33) {
+                } else if (luck >= 0.025 && luck <= 0.033) {
                     instance = new StatusEffectInstance(StatusEffects.LEVITATION,20*10,level-1);
-                }else if(luck >= 0.5 && luck<= 0.7){
+                }else if(luck >= 0.05 && luck<= 0.07){
                     instance = new StatusEffectInstance(StatusEffects.NAUSEA,60*20,level-1);
                 }
             }
-            living.addStatusEffect(instance);
+            if(instance != null){
+                living.addStatusEffect(instance);
+            }
         }
     }
 

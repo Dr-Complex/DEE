@@ -4,17 +4,17 @@
     "translate": "enchantment.double_edged_enchantments.enchantment_aerodynamic"
   },
   "max_cost": {
-    "base": 10,
-    "per_level_above_first": 2
+    "base": 15,
+    "per_level_above_first": 10
   },
   "max_level": 10,
   "min_cost": {
     "base": 5,
-    "per_level_above_first": 2
+    "per_level_above_first": 10
   },
   "slots": [
     "mainhand"
   ],
   "supported_items": "#double_edged_enchantments:shoot_enchantable",
-  "weight": 10
+  "weight": 5
 }

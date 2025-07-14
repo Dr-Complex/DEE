@@ -712,42 +712,36 @@ public class DEE_Enchantments {
                 itemsLookup.getOrThrow(ItemTags.LEG_ARMOR_ENCHANTABLE),
                 10,10,
                 Enchantment.leveledCost(5,2),
-                Enchantment.leveledCost(10,2),2,AttributeModifierSlot.ARMOR
+                Enchantment.leveledCost(10,2),2,AttributeModifierSlot.LEGS
         )).addEffect(EnchantmentEffectComponentTypes.ATTRIBUTES,new AttributeEnchantmentEffect(
                 DEE_Common.id("enchantment_speed"),
                 EntityAttributes.MOVEMENT_SPEED,
-                EnchantmentLevelBasedValue.linear(0.25f,0.125f), EntityAttributeModifier.Operation.ADD_VALUE
-        )).addEffect(EnchantmentEffectComponentTypes.ATTRIBUTES,new AttributeEnchantmentEffect(
-                DEE_Common.id("enchantment_speed"),
-                EntityAttributes.FLYING_SPEED,
-                EnchantmentLevelBasedValue.linear(0.15f,0.075f), EntityAttributeModifier.Operation.ADD_VALUE)));
+                EnchantmentLevelBasedValue.linear(0.15f,0.015f), EntityAttributeModifier.Operation.ADD_VALUE
+        )));
 
         register(registerable, CURSE_FATIGUE, Enchantment.builder(Enchantment.definition(
-                itemsLookup.getOrThrow(ItemTags.EQUIPPABLE_ENCHANTABLE),
+                itemsLookup.getOrThrow(ItemTags.LEG_ARMOR_ENCHANTABLE),
                 1,10,
                 Enchantment.leveledCost(5,2),
-                Enchantment.leveledCost(10,2),2,AttributeModifierSlot.ARMOR
+                Enchantment.leveledCost(10,2),2,AttributeModifierSlot.LEGS
         )).addEffect(EnchantmentEffectComponentTypes.ATTRIBUTES,new AttributeEnchantmentEffect(
                 DEE_Common.id("enchantment_speed"),
                 EntityAttributes.MOVEMENT_SPEED,
-                EnchantmentLevelBasedValue.linear(-0.3f,-0.35f), EntityAttributeModifier.Operation.ADD_VALUE
-        )).addEffect(EnchantmentEffectComponentTypes.ATTRIBUTES,new AttributeEnchantmentEffect(
-                DEE_Common.id("enchantment_speed"),
-                EntityAttributes.FLYING_SPEED,
-                EnchantmentLevelBasedValue.linear(-0.1f,-0.2f), EntityAttributeModifier.Operation.ADD_VALUE)));
+                EnchantmentLevelBasedValue.linear(-0.05f,-0.025f), EntityAttributeModifier.Operation.ADD_VALUE
+        )));
 
         register(registerable, ENCHANTMENT_HOPE, Enchantment.builder(Enchantment.definition(
-                itemsLookup.getOrThrow(ItemTags.ARMOR_ENCHANTABLE),
+                itemsLookup.getOrThrow(ItemTags.CHEST_ARMOR_ENCHANTABLE),
                 10,10,
                 Enchantment.leveledCost(5,2),
-                Enchantment.leveledCost(10,2),2,AttributeModifierSlot.ARMOR
+                Enchantment.leveledCost(10,2),2,AttributeModifierSlot.CHEST
         )).addEffect(EnchantmentEffectComponentTypes.TICK, new StatusEffectAdder(true)));
 
         register(registerable, CURSE_DESPAIR, Enchantment.builder(Enchantment.definition(
-                itemsLookup.getOrThrow(ItemTags.ARMOR_ENCHANTABLE),
+                itemsLookup.getOrThrow(ItemTags.CHEST_ARMOR_ENCHANTABLE),
                 1,10,
                 Enchantment.leveledCost(5,2),
-                Enchantment.leveledCost(10,2),2,AttributeModifierSlot.ARMOR
+                Enchantment.leveledCost(10,2),2,AttributeModifierSlot.CHEST
         )).addEffect(EnchantmentEffectComponentTypes.TICK, new StatusEffectAdder(false)));
     }
 

@@ -23,7 +23,7 @@ public class JettatuimToolItem extends Item {
     }
 
     @Override
-    public void inventoryTick(ItemStack stack, @NotNull ServerWorld world, Entity entity, @Nullable EquipmentSlot slot) {
+    public void inventoryTick(ItemStack stack, @NotNull ServerWorld world, @NotNull Entity entity, @Nullable EquipmentSlot slot) {
         CursePower = 0f;
         if(entity.getWeaponStack() == (stack)){
             IndexedIterable<RegistryEntry<Enchantment>> entries = world.getRegistryManager().getOrThrow(RegistryKeys.ENCHANTMENT).getIndexedEntries();
@@ -42,11 +42,11 @@ public class JettatuimToolItem extends Item {
 
     @Override
     public float getBonusAttackDamage(Entity target, float baseAttackDamage, DamageSource damageSource) {
-        return super.getBonusAttackDamage(target, baseAttackDamage * (CursePower + 1), damageSource);
+        return baseAttackDamage + (CursePower * CursePower);
     }
 
     @Override
     public float getMiningSpeed(ItemStack stack, BlockState state) {
-        return super.getMiningSpeed(stack, state) * (CursePower + 1);
+        return super.getMiningSpeed(stack, state) + (CursePower * CursePower);
     }
 }

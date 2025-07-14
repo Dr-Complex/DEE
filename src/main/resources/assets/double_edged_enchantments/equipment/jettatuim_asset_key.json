@@ -1,0 +1,14 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "double_edged_enchantments:jettatium"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "double_edged_enchantments:jettatium"
+      }
+    ]
+  }
+}

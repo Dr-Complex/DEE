@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": "double_edged_enchantments:cut_jattatium",
+    "s": "minecraft:stick"
+  },
+  "pattern": [
+    "#",
+    "#",
+    "s"
+  ],
+  "result": {
+    "count": 1,
+    "id": "double_edged_enchantments:jettatium_sword"
+  }
+}

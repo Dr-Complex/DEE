@@ -16,7 +16,7 @@
         "items": [
           {
             "count": {
-              "min": 4
+              "min": 5
             },
             "items": "minecraft:sculk_vein"
           }

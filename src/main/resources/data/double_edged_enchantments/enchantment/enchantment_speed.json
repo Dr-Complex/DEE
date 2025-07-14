@@ -8,37 +8,27 @@
       {
         "amount": {
           "type": "minecraft:linear",
-          "base": 0.25,
-          "per_level_above_first": 0.125
+          "base": 0.15,
+          "per_level_above_first": 0.015
         },
         "attribute": "minecraft:movement_speed",
-        "id": "double_edged_enchantments:enchantment_speed",
-        "operation": "add_value"
-      },
-      {
-        "amount": {
-          "type": "minecraft:linear",
-          "base": 0.15,
-          "per_level_above_first": 0.075
-        },
-        "attribute": "minecraft:flying_speed",
         "id": "double_edged_enchantments:enchantment_speed",
         "operation": "add_value"
       }
     ]
   },
   "max_cost": {
-    "base": 10,
-    "per_level_above_first": 2
+    "base": 15,
+    "per_level_above_first": 10
   },
   "max_level": 10,
   "min_cost": {
     "base": 5,
-    "per_level_above_first": 2
+    "per_level_above_first": 10
   },
   "slots": [
-    "armor"
+    "legs"
   ],
   "supported_items": "#minecraft:enchantable/leg_armor",
-  "weight": 10
+  "weight": 4
 }

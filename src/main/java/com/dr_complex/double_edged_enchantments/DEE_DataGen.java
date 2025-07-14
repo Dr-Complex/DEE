@@ -2,6 +2,9 @@ package com.dr_complex.double_edged_enchantments;
 
 import com.dr_complex.double_edged_enchantments.datagen.*;
 import com.dr_complex.double_edged_enchantments.enchantments.DEE_Enchantments;
+import com.dr_complex.double_edged_enchantments.world.DEE_ConfiguredFeatures;
+import com.dr_complex.double_edged_enchantments.world.DEE_PlacedFeatures;
+import com.dr_complex.double_edged_enchantments.world.gen.DEE_WorldGen;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
@@ -27,5 +30,7 @@ public class DEE_DataGen implements DataGeneratorEntrypoint {
 	@Override
 	public void buildRegistry(@NotNull RegistryBuilder registryBuilder) {
 		registryBuilder.addRegistry(RegistryKeys.ENCHANTMENT, DEE_Enchantments::bootstrap);
+		registryBuilder.addRegistry(RegistryKeys.PLACED_FEATURE, DEE_PlacedFeatures::bootstrap);
+		registryBuilder.addRegistry(RegistryKeys.CONFIGURED_FEATURE, DEE_ConfiguredFeatures::bootstrap);
 	}
 }

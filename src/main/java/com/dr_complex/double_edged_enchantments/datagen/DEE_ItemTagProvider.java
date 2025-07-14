@@ -41,7 +41,14 @@ public class DEE_ItemTagProvider extends FabricTagProvider.ItemTagProvider {
 
         valueLookupBuilder(DEE_Tags.Items.REPAIR_JATTATIUM)
                 .add(Items.OMINOUS_BOTTLE)
+                .add(DEE_Items.RAW_JATTATIUM)
                 .add(Items.EXPERIENCE_BOTTLE);
+
+        valueLookupBuilder(DEE_Tags.Items.JATTATIUM_ARMOR)
+                .add(DEE_Items.JETTATUIM_HELMET)
+                .add(DEE_Items.JETTATUIM_CHEST_PLATE)
+                .add(DEE_Items.JETTATUIM_LEGGINGS)
+                .add(DEE_Items.JETTATUIM_BOOTS);
 
         valueLookupBuilder(ItemTags.SWORDS)
                 .add(DEE_Items.JETTATIUM_SWORD);
@@ -57,5 +64,14 @@ public class DEE_ItemTagProvider extends FabricTagProvider.ItemTagProvider {
 
         valueLookupBuilder(ItemTags.HOES)
                 .add(DEE_Items.JETTATIUM_HOE);
+
+        valueLookupBuilder(ItemTags.HEAD_ARMOR_ENCHANTABLE).add(DEE_Items.JETTATUIM_HELMET);
+        valueLookupBuilder(ItemTags.HEAD_ARMOR).add(DEE_Items.JETTATUIM_HELMET);
+        valueLookupBuilder(ItemTags.CHEST_ARMOR_ENCHANTABLE).add(DEE_Items.JETTATUIM_CHEST_PLATE);
+        valueLookupBuilder(ItemTags.CHEST_ARMOR).add(DEE_Items.JETTATUIM_CHEST_PLATE);
+        valueLookupBuilder(ItemTags.LEG_ARMOR_ENCHANTABLE).add(DEE_Items.JETTATUIM_LEGGINGS);
+        valueLookupBuilder(ItemTags.LEG_ARMOR).add(DEE_Items.JETTATUIM_LEGGINGS);
+        valueLookupBuilder(ItemTags.FOOT_ARMOR_ENCHANTABLE).add(DEE_Items.JETTATUIM_BOOTS);
+        valueLookupBuilder(ItemTags.FOOT_ARMOR).add(DEE_Items.JETTATUIM_BOOTS);
     }
 }
