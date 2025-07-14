@@ -4,7 +4,6 @@ import com.dr_complex.double_edged_enchantments.datagen.*;
 import com.dr_complex.double_edged_enchantments.enchantments.DEE_Enchantments;
 import com.dr_complex.double_edged_enchantments.world.DEE_ConfiguredFeatures;
 import com.dr_complex.double_edged_enchantments.world.DEE_PlacedFeatures;
-import com.dr_complex.double_edged_enchantments.world.gen.DEE_WorldGen;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;

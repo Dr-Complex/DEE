@@ -7,7 +7,6 @@ import com.dr_complex.double_edged_enchantments.utils.DEE_Tags;
 import net.minecraft.block.Block;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.WeaponComponent;
-import net.minecraft.item.ArrowItem;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ToolMaterial;
@@ -21,7 +20,6 @@ import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.sound.SoundEvents;
-import net.minecraft.util.Identifier;
 
 import java.util.Map;
 import java.util.function.BiFunction;
