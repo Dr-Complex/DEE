@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "@": "minecraft:iron_ingot",
+    "s": "minecraft:stick"
+  },
+  "pattern": [
+    "  @",
+    " s ",
+    "s  "
+  ],
+  "result": {
+    "count": 1,
+    "id": "double_edged_enchantments:iron_spear"
+  }
+}

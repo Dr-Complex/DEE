@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "@": "#minecraft:stone_tool_materials",
+    "s": "minecraft:stick"
+  },
+  "pattern": [
+    "  @",
+    " s ",
+    "s  "
+  ],
+  "result": {
+    "count": 1,
+    "id": "double_edged_enchantments:stone_spear"
+  }
+}

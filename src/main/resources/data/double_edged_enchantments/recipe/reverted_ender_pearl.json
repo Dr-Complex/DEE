@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": "minecraft:echo_shard",
+    "@": "minecraft:ender_pearl"
+  },
+  "pattern": [
+    " # ",
+    "#@#",
+    " # "
+  ],
+  "result": {
+    "count": 3,
+    "id": "double_edged_enchantments:reverted_ender_pearl"
+  }
+}

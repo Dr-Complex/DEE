@@ -10,6 +10,7 @@ import net.minecraft.item.Items;
 import net.minecraft.predicate.NumberRange;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.registry.tag.ItemTags;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -119,6 +120,78 @@ public class DEE_RecipeProvider extends FabricRecipeProvider {
                     .criterion(hasItem(DEE_Items.JETTATUIM_BLOCK),conditionsFromItem(DEE_Items.JETTATUIM_BLOCK))
                     .offerTo(exporter);
 
+            createShaped(RecipeCategory.COMBAT,DEE_Items.WOODEN_SPEAR,1)
+                    .pattern("  @")
+                    .pattern(" s ")
+                    .pattern("s  ")
+                    .input('@', ItemTags.PLANKS)
+                    .input('s', Items.STICK)
+                    .criterion(hasItem(Items.OAK_PLANKS),conditionsFromTag(ItemTags.PLANKS)).offerTo(exporter);
+
+            createShaped(RecipeCategory.COMBAT,DEE_Items.STONE_SPEAR,1)
+                    .pattern("  @")
+                    .pattern(" s ")
+                    .pattern("s  ")
+                    .input('@', ItemTags.STONE_TOOL_MATERIALS)
+                    .input('s', Items.STICK)
+                    .criterion(hasItem(Items.COBBLESTONE),conditionsFromTag(ItemTags.STONE_TOOL_MATERIALS)).offerTo(exporter);
+
+            createShaped(RecipeCategory.COMBAT,DEE_Items.IRON_SPEAR,1)
+                    .pattern("  @")
+                    .pattern(" s ")
+                    .pattern("s  ")
+                    .input('@', Items.IRON_INGOT)
+                    .input('s', Items.STICK)
+                    .criterion(hasItem(Items.IRON_INGOT),conditionsFromItem(Items.IRON_INGOT)).offerTo(exporter);
+
+            createShaped(RecipeCategory.COMBAT,DEE_Items.COPPER_SPEAR,1)
+                    .pattern("  @")
+                    .pattern(" s ")
+                    .pattern("s  ")
+                    .input('@', Items.COPPER_INGOT)
+                    .input('s', Items.STICK)
+                    .criterion(hasItem(Items.COPPER_INGOT),conditionsFromItem(Items.COPPER_INGOT)).offerTo(exporter);
+
+            createShaped(RecipeCategory.COMBAT,DEE_Items.DIAMOND_SPEAR,1)
+                    .pattern("  @")
+                    .pattern(" s ")
+                    .pattern("s  ")
+                    .input('@', Items.DIAMOND)
+                    .input('s', Items.STICK)
+                    .criterion(hasItem(Items.DIAMOND),conditionsFromItem(Items.DIAMOND)).offerTo(exporter);
+
+            createShaped(RecipeCategory.COMBAT,DEE_Items.JETTATIUM_SPEAR,1)
+                    .pattern("  @")
+                    .pattern(" s ")
+                    .pattern("s  ")
+                    .input('@', DEE_Items.CUT_JATTATIUM)
+                    .input('s', Items.STICK)
+                    .criterion(hasItem(DEE_Items.CUT_JATTATIUM),conditionsFromItem(DEE_Items.CUT_JATTATIUM)).offerTo(exporter);
+
+            createShaped(RecipeCategory.COMBAT,DEE_Items.GOLDEN_SPEAR,1)
+                    .pattern("  @")
+                    .pattern(" s ")
+                    .pattern("s  ")
+                    .input('@', Items.GOLD_INGOT)
+                    .input('s', Items.STICK)
+                    .criterion(hasItem(Items.GOLD_INGOT),conditionsFromItem(Items.GOLD_INGOT)).offerTo(exporter);
+
+            createShaped(RecipeCategory.COMBAT, DEE_Items.REVERED_ENDER_PEARL, 3)
+                    .pattern(" # ")
+                    .pattern("#@#")
+                    .pattern(" # ")
+                    .input('@', Items.ENDER_PEARL)
+                    .input('#', Items.ECHO_SHARD)
+                    .criterion(hasItem(Items.ECHO_SHARD), conditionsFromItem(NumberRange.IntRange.atLeast(5),Items.ECHO_SHARD)).offerTo(exporter);
+
+            createShaped(RecipeCategory.MISC, DEE_Items.EXP_NEEDLE,1)
+                    .pattern(" b ")
+                    .pattern("gEg")
+                    .pattern(" i ")
+                    .input('i',Items.IRON_NUGGET).criterion(hasItem(Items.IRON_NUGGET),conditionsFromItem(Items.IRON_NUGGET))
+                    .input('g',Items.GLASS_PANE).criterion(hasItem(Items.GLASS_PANE),conditionsFromItem(Items.GLASS_PANE))
+                    .input('E',Items.EXPERIENCE_BOTTLE).criterion(hasItem(Items.EXPERIENCE_BOTTLE),conditionsFromItem(Items.EXPERIENCE_BOTTLE))
+                    .input('b',ItemTags.WOODEN_BUTTONS).criterion(hasItem(Items.OAK_BUTTON),conditionsFromTag(ItemTags.WOODEN_BUTTONS)).offerTo(exporter);
             }
         };
     }

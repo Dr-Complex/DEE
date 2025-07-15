@@ -1,11 +1,11 @@
 package com.dr_complex.double_edged_enchantments.item.custom;
 
-import com.dr_complex.double_edged_enchantments.DEE_Common;
 import net.minecraft.block.BlockState;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.RegistryKeys;
@@ -25,18 +25,17 @@ public class JettatuimToolItem extends Item {
     @Override
     public void inventoryTick(ItemStack stack, @NotNull ServerWorld world, @NotNull Entity entity, @Nullable EquipmentSlot slot) {
         CursePower = 0f;
-        if(entity.getWeaponStack() == (stack)){
-            IndexedIterable<RegistryEntry<Enchantment>> entries = world.getRegistryManager().getOrThrow(RegistryKeys.ENCHANTMENT).getIndexedEntries();
-            if(entries != null && stack.hasEnchantments()) {
-                entries.forEach(map -> map.isIn(EnchantmentTags.CURSE));
-                for (int index = 0; index < entries.size(); index++) {
-                    CursePower += stack.getEnchantments().getLevel(entries.get(index));
+        if(entity instanceof PlayerEntity player) {
+            if (player.getMainHandStack() == (stack)) {
+                IndexedIterable<RegistryEntry<Enchantment>> entries = world.getRegistryManager().getOrThrow(RegistryKeys.ENCHANTMENT).getIndexedEntries();
+                if (entries != null && stack.hasEnchantments()) {
+                    entries.forEach(map -> map.isIn(EnchantmentTags.CURSE));
+                    for (int index = 0; index < entries.size(); index++) {
+                        CursePower += stack.getEnchantments().getLevel(entries.get(index));
+                    }
                 }
             }
         }
-
-        DEE_Common.LOGGER.info(String.valueOf(CursePower));
-
         super.inventoryTick(stack, world, entity, slot);
     }
 

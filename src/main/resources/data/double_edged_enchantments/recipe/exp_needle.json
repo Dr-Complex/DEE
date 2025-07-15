@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "E": "minecraft:experience_bottle",
+    "b": "#minecraft:wooden_buttons",
+    "g": "minecraft:glass_pane",
+    "i": "minecraft:iron_nugget"
+  },
+  "pattern": [
+    " b ",
+    "gEg",
+    " i "
+  ],
+  "result": {
+    "count": 1,
+    "id": "double_edged_enchantments:exp_needle"
+  }
+}
